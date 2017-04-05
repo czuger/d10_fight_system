@@ -18,6 +18,10 @@ class Creature
     @def_mode = nil
   end
 
+  def alive?
+    @hp > 0
+  end
+
   def initiative
     r = Roll.new
     @coo + ( r.critic ? 20 : 0 ) + r.sum
@@ -34,6 +38,20 @@ class Creature
     else
       @current_position += 1
     end
+  end
+
+  def wound( current_weapon, result )
+    hit = current_weapon.damage.roll
+    puts "Damage roll = #{hit}"
+
+    if result.critic
+      puts 'Critic !!! Damage roll doubled'
+      hit *= 2
+    end
+
+    puts "#{name} loose #{hit} hp"
+    @hp -= hit
+    puts "#{name} die" if @hp < 0
   end
 
 end

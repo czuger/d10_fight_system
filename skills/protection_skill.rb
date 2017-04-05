@@ -1,12 +1,12 @@
 require_relative 'skill'
-require_relative '../core/def_module'
+require_relative '../items/damage_item'
 
 class ProtectionSkill < Skill
 
-  include DefModule
+  include DamageItem
 
-  def initialize( name, trait )
-    super( name, trait )
+  def initialize( name, trait, difficulty )
+    super( name, trait, difficulty )
   end
 
 end

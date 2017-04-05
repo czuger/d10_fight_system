@@ -6,25 +6,34 @@ module Fight
 
     re = bg.reachable_enemies( self )
 
+    # p re.map{ |e| e.name }
+    puts
+    puts '*** New fight ***'
+
     if re.empty?
-      bg.advance_one_step
+      puts "#{name} find no reachable enemy. Step ahead"
+      # TODO : fix this
+      # bg.advance_one_step
     else
       enemy = re.sample
+
+      puts "#{name} about to attack #{enemy.name}"
+
       difficulty = @current_weapon.difficulty
-      difficulty -= @current_weapon.skill.bonus( self ) # level + trait value
+      difficulty -= @current_weapon.bonus( self ) # level + trait value
 
       if @current_weapon.distance
         d = distance( enemy )
         difficulty += d
       end
 
-      difficulty += enemy.def_mode.def_module_difficulty
+      difficulty += enemy.def_mode.difficulty
 
       result = Roll.new( difficulty )
 
       if result.success
 
-        enemy.wound( result )
+        enemy.wound( @current_weapon, result )
         enemy.def_mode.increase_skill
 
         if result.critic

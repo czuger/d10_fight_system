@@ -3,6 +3,8 @@ require_relative '../../items/items'
 
 class Kobold < Monster
 
+  @@kobold_no = 1
+
   def initialize
 
     @str = 8
@@ -16,6 +18,13 @@ class Kobold < Monster
     @current_weapon = Items.get( :sword )
     @current_position = 1
 
+    @kobold_no = @@kobold_no
+    @@kobold_no += 1
+
+  end
+
+  def name
+    "Kobold #{@kobold_no}"
   end
 
 end

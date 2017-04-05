@@ -1,17 +1,19 @@
 require_relative 'item'
 require_relative '../skills/skills'
-require_relative '../core/def_module'
+require_relative 'damage_item'
+require_relative 'item_skill'
 
 class Tool < Item
 
-  attr_reader :difficulty, :skill
+  attr_reader :skill
 
-  include DefModule
+  include ItemSkill
+  include DamageItem
 
   def initialize( name, hp, skill, difficulty )
     super( name, hp )
-    @skill = Skill.get( skill )
-    @difficulty = difficulty
+    @skill = Skills.get( skill )
+    @difficulty_value = difficulty
   end
 
 end

@@ -5,12 +5,20 @@ require_relative '../items/weapon'
 
 class Character < Creature
 
+  @@hero_no = 1
+
   def initialize( _class )
 
     set_class( _class )
 
     @hp = 8 + @str - 10
+    @hero_no = @@hero_no
+    @@hero_no += 1
 
+  end
+
+  def name
+    "Hero #{@hero_no}"
   end
 
   def side
@@ -54,7 +62,7 @@ class Character < Creature
       @mem = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
 
       # Fighter
-      @def_mode = Item.get( :shield )
+      @def_mode = Items.get( :shield )
       @current_weapon = Items.get( :sword )
       @current_position = 1
 
