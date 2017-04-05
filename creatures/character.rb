@@ -18,17 +18,19 @@ class Character < Creature
   end
 
   def name
-    "Hero #{@hero_no}"
+    "#{@class_name}"
   end
 
-  def side
-    :heroes
+  def heroes?
+    true
   end
 
   private
 
   # Define the way the creature will fight
   def set_class( _class )
+
+    @class_name = _class
 
     if _class == :magic
 

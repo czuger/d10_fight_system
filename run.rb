@@ -2,4 +2,4 @@ require_relative 'core/battleground'
 
 bg = Battleground.new
 
-bg.round
+bg.fight_to_death

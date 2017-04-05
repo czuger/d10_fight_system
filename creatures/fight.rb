@@ -12,8 +12,7 @@ module Fight
 
     if re.empty?
       puts "#{name} find no reachable enemy. Step ahead"
-      # TODO : fix this
-      # bg.advance_one_step
+      advance_one_step
     else
       enemy = re.sample
 

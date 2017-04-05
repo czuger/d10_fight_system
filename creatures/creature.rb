@@ -18,6 +18,10 @@ class Creature
     @def_mode = nil
   end
 
+  def enemies?( creature )
+    ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )
+  end
+
   def alive?
     @hp > 0
   end
@@ -33,11 +37,12 @@ class Creature
   end
 
   def advance_one_step
-    if side == :heroes
+    if heroes?
       @current_position -= 1
     else
       @current_position += 1
     end
+    puts "Current position = #{@current_position}"
   end
 
   def wound( current_weapon, result )
