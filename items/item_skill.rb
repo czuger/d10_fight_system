@@ -10,7 +10,7 @@ module ItemSkill
   def bonus( creature )
     s = get_skill
     raise "#{creature.inspect} does not have #{s.trait.inspect}" unless creature.respond_to?( s.trait )
-    s.level + creature.send( s.trait )
+    s.level + creature.send( s.trait ) - 10
   end
 
   def increase_skill

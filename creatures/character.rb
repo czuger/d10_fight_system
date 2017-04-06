@@ -1,31 +1,42 @@
+require 'colorize'
+
 require_relative 'creature'
 require_relative '../skills/skills'
 require_relative '../items/tool'
 require_relative '../items/weapon'
+require_relative 'name_generator'
 
 class Character < Creature
 
-  @@hero_no = 1
+  attr_reader :name
 
-  def initialize( _class )
+  def initialize
 
-    set_class( _class )
+    @str = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    @coo = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    @will = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    @mem = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
 
     @hp = 8 + @str - 10
-    @hero_no = @@hero_no
-    @@hero_no += 1
 
+    @name = NameGenerator.generate
   end
 
-  def name
-    "#{@class_name}"
+  def print
+    puts "Name : #{@name}".blue
+    puts "STR : #{@str}, COO : #{@coo}, WILL : #{@will}, MEM : #{@mem}".yellow
+    puts "HP : #{@hp}".yellow
   end
 
   def heroes?
     true
   end
 
-  private
+  def set_fighting_spec( def_mode, current_weapon, current_position )
+    @def_mode = def_mode
+    @current_weapon = current_weapon
+    @current_position = current_position
+  end
 
   # Define the way the creature will fight
   def set_class( _class )
