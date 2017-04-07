@@ -23,7 +23,7 @@ class Character < Creature
   end
 
   def print
-    puts "Name : #{@name}".blue
+    puts "Name : #{@name}".yellow
     puts "STR : #{@str}, COO : #{@coo}, WILL : #{@will}, MEM : #{@mem}".yellow
     puts "HP : #{@hp}".yellow
   end
