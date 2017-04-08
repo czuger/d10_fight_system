@@ -3,8 +3,9 @@ require_relative 'items/items'
 require_relative 'skills/skills'
 require_relative 'skills/magic'
 
-c = Character.new
+FileUtils.mkpath( 'data/characters' )
 
+c = Character.new
 c.print
 
 def hash_choice( hash )
