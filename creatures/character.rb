@@ -26,6 +26,9 @@ class Character < Creature
     puts "Name : #{@name}".yellow
     puts "STR : #{@str}, COO : #{@coo}, WILL : #{@will}, MEM : #{@mem}".yellow
     puts "HP : #{@hp}".yellow
+    puts "Def mode -> #{@def_mode.print}".yellow if @def_mode
+    puts "Current weapon -> #{@current_weapon.print}".yellow if @current_weapon
+    puts "Current position -> #{@current_position}".yellow if @current_position
   end
 
   def heroes?

@@ -17,4 +17,8 @@ class Skill
     @xp / 50 / 2
   end
 
+  def print
+    "#{@name} : #{level}"
+  end
+
 end

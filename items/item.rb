@@ -5,4 +5,8 @@ class Item
     @hp = hp
   end
 
+  def print
+    "#{@name} : ( hp:#{@hp} ) "
+  end
+
 end

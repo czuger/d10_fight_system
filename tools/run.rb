@@ -1,4 +1,4 @@
-require_relative 'core/battleground'
+require_relative '../core/battleground'
 
 bg = Battleground.new
 
