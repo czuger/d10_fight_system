@@ -1,5 +1,4 @@
 require_relative 'monster'
-require_relative '../../items/items'
 
 class Kobold < Monster
 
@@ -13,7 +12,7 @@ class Kobold < Monster
     @hp = 4
 
     @def_mode = PopulateSkills.get(:dodge )
-    @current_weapon = Items.get( :sword )
+    @current_weapon = PopulateItems.get(:sword )
     @current_position = 1
 
   end

@@ -19,7 +19,7 @@ class CreateCreature < ActiveRecord::Migration[5.0]
       t.integer :current_position, null: false, default: 1
 
       t.integer :current_weapon_id
-      t.integer :def_mode_id
+      t.references :def_mode, polymorphic: true
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410121742) do
+ActiveRecord::Schema.define(version: 20170410124500) do
 
   create_table "creature_skills", force: :cascade do |t|
     t.integer "creature_id",             null: false
@@ -33,9 +33,11 @@ ActiveRecord::Schema.define(version: 20170410121742) do
     t.integer  "default_position",  default: 1, null: false
     t.integer  "current_position",  default: 1, null: false
     t.integer  "current_weapon_id"
+    t.string   "def_mode_type"
     t.integer  "def_mode_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.index ["def_mode_type", "def_mode_id"], name: "index_creatures_on_def_mode_type_and_def_mode_id"
   end
 
   create_table "damages", force: :cascade do |t|
@@ -45,6 +47,20 @@ ActiveRecord::Schema.define(version: 20170410121742) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["dices_side", "nb_dices", "bonus"], name: "index_damages_on_dices_side_and_nb_dices_and_bonus", unique: true
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "skill_id"
+    t.integer  "difficulty"
+    t.string   "trait"
+    t.integer  "hp"
+    t.integer  "damage_id"
+    t.integer  "reach"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["damage_id"], name: "index_items_on_damage_id"
+    t.index ["skill_id"], name: "index_items_on_skill_id"
   end
 
   create_table "skills", force: :cascade do |t|

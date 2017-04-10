@@ -1,5 +1,4 @@
 require_relative 'monster'
-require_relative '../../items/items'
 
 class Imp < Monster
 

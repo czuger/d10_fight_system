@@ -1,5 +1,4 @@
 require_relative '../../creatures/character'
-require_relative '../../items/items'
 require_relative '../../skills/magic'
 
 def hash_choice( hash )
@@ -30,12 +29,12 @@ def hash_choice( hash )
 end
 
 def set_data( c )
-  def_modes = {dodge: PopulateSkills, shield: Items } # TODO : parry is hard because it need to work with all weapons
+  def_modes = {dodge: Skill, shield: Item } # TODO : parry is hard because it need to work with all weapons
   puts 'Select def mode'.blue
   input = hash_choice( def_modes )
   mode = def_modes[ input ].get( input )
 
-  weapons = { sword: Items, bow: Items, magic_missile: PopulateSkills }
+  weapons = { sword: Item, bow: Item, magic_missile: Skill }
   puts 'Select current weapon'.blue
   input = hash_choice( weapons )
   weapon = weapons[ input ].get( input )

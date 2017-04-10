@@ -5,8 +5,6 @@ require_relative '../core/damage'
 
 class Skill < ActiveRecord::Base
 
-  include ItemSkill
-
   belongs_to :damage, optional: true
 
   def level

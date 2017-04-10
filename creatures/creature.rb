@@ -7,6 +7,8 @@ class Creature < ActiveRecord::Base
 
   include Fight
 
+  has_many :def_mode, polymorphic: true
+
   def enemies?( creature )
     ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )
   end
@@ -17,7 +19,7 @@ class Creature < ActiveRecord::Base
 
   def initiative
     r = Roll.new
-    @coo + ( r.critic ? 20 : 0 ) + r.sum
+    coo + ( r.critic ? 20 : 0 ) + r.sum
   end
 
   def distance( creature )
@@ -46,6 +48,12 @@ class Creature < ActiveRecord::Base
     puts "#{name} loose #{hit} hp"
     @hp -= hit
     puts "#{name} die" if @hp < 0
+  end
+
+  def set_fighting_spec( def_mode, current_weapon, current_position )
+    def_mode = def_mode
+    # current_weapon = current_weapon
+    # current_position = current_position
   end
 
 end

@@ -1,12 +1,10 @@
-class Item
+require 'active_record'
 
-  def initialize( name, hp )
-    @name = name
-    @hp = hp
-  end
+class Item < ActiveRecord::Base
+
 
   def print
-    "#{@name} : ( hp:#{@hp} ) "
+    "#{name} : ( hp:#{hp} ) "
   end
 
 end
