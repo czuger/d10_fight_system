@@ -35,7 +35,7 @@ module Fight
 
       if result.success
 
-        enemy.wound( current_weapon, result )
+        enemy.wound( current_weapon, result, self )
         enemy.def_mode.gain_xp
 
         if result.critic

@@ -41,10 +41,15 @@ class CreatureSkill < ActiveRecord::Base
   end
 
   def gain_xp
+    puts 'XP gain'.yellow
     increment!( :xp )
   end
 
   def damage_item
+  end
+
+  def damage_bonus( _ )
+    0
   end
 
 end

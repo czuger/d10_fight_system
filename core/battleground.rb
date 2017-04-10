@@ -19,7 +19,6 @@ class Battleground
       c.reset_hp
     end
 
-
   end
 
   def fight_to_death

@@ -37,7 +37,7 @@ class Creature < ActiveRecord::Base
     puts "Current position = #{current_position}"
   end
 
-  def wound( current_weapon, result )
+  def wound( current_weapon, result, attacker )
     # p current_weapon
     hit = current_weapon.damage.roll
     puts "Damage roll = #{hit}"
@@ -46,6 +46,8 @@ class Creature < ActiveRecord::Base
       puts 'Critic !!! Damage roll doubled'
       hit *= 2
     end
+
+    hit += current_weapon.damage_bonus( attacker )
 
     puts "#{name} loose #{hit} hp"
     decrement!( :current_hp, hit )

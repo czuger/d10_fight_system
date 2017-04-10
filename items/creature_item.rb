@@ -45,4 +45,12 @@ class CreatureItem < ActiveRecord::Base
     item.damage
   end
 
+  def damage_bonus( attacker )
+    if creature_skill.trait == 'str'
+      puts "Force used, damage bonus : #{attacker.str - 10}"
+      return attacker.str - 10
+    end
+    0
+  end
+
 end
