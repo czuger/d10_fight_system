@@ -1,24 +1,20 @@
+require 'active_record'
+
 require_relative '../items/item_skill'
+require_relative '../core/damage'
 
-class Skill
-
-  attr_accessor :xp
+class Skill < ActiveRecord::Base
 
   include ItemSkill
 
-  def initialize( name, trait, difficulty )
-    @xp = 0
-    @name = name
-    @trait = trait
-    @difficulty_value = difficulty
-  end
+  belongs_to :damage, optional: true
 
   def level
-    @xp / 50 / 2
+    xp / 50 / 2
   end
 
   def print
-    "#{@name} : #{level}"
+    "#{name} : #{level}"
   end
 
 end

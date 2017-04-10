@@ -1,5 +1,4 @@
 require_relative 'item'
-require_relative '../skills/skills'
 require_relative 'damage_item'
 require_relative 'item_skill'
 
@@ -12,7 +11,7 @@ class Tool < Item
 
   def initialize( name, hp, skill, difficulty )
     super( name, hp )
-    @skill = Skills.get( skill )
+    @skill = PopulateSkills.get(skill )
     @difficulty_value = difficulty
   end
 

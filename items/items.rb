@@ -1,5 +1,4 @@
 require_relative 'weapon'
-require_relative '../skills/skills'
 
 class Items
 

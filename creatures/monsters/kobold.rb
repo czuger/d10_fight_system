@@ -12,7 +12,7 @@ class Kobold < Monster
 
     @hp = 4
 
-    @def_mode = Skills.get( :dodge )
+    @def_mode = PopulateSkills.get(:dodge )
     @current_weapon = Items.get( :sword )
     @current_position = 1
 

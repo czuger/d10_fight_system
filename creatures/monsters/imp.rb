@@ -1,6 +1,5 @@
 require_relative 'monster'
 require_relative '../../items/items'
-require_relative '../../skills/skills'
 
 class Imp < Monster
 
@@ -13,8 +12,8 @@ class Imp < Monster
 
     @hp = 2
 
-    @def_mode = Skills.get( :dodge )
-    @current_weapon = Skills.get( :imp_blast )
+    @def_mode = PopulateSkills.get(:dodge )
+    @current_weapon = PopulateSkills.get(:imp_blast )
     @current_position = 3
 
   end

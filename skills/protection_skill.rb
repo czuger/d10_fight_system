@@ -5,8 +5,4 @@ class ProtectionSkill < Skill
 
   include DamageItem
 
-  def initialize( name, trait, difficulty )
-    super( name, trait, difficulty )
-  end
-
 end
