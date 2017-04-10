@@ -7,7 +7,7 @@ ActiveRecord::Base.establish_connection( db_info[ 'development' ] )
 
 c = Character.generate
 
-p c
-
+# p c
+#
 c.print
-c = set_data( c )
+# c = set_data( c )

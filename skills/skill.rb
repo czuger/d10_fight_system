@@ -7,10 +7,6 @@ class Skill < ActiveRecord::Base
 
   belongs_to :damage, optional: true
 
-  def level
-    xp / 50 / 2
-  end
-
   def print
     "#{name} : #{level}"
   end

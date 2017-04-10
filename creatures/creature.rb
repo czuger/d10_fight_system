@@ -7,7 +7,7 @@ class Creature < ActiveRecord::Base
 
   include Fight
 
-  has_many :def_mode, polymorphic: true
+  belongs_to :def_mode, polymorphic: true
 
   def enemies?( creature )
     ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )

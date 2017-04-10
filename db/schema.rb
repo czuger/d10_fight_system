@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20170410124500) do
     t.string   "name",       null: false
     t.integer  "skill_id"
     t.integer  "difficulty"
-    t.string   "trait"
     t.integer  "hp"
     t.integer  "damage_id"
     t.integer  "reach"

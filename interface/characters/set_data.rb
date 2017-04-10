@@ -1,5 +1,6 @@
 require_relative '../../creatures/character'
 require_relative '../../skills/magic'
+require_relative '../../skills/creature_skill'
 
 def hash_choice( hash )
   keys = hash.keys
@@ -31,24 +32,32 @@ end
 def set_data( c )
   def_modes = {dodge: Skill, shield: Item } # TODO : parry is hard because it need to work with all weapons
   puts 'Select def mode'.blue
-  input = hash_choice( def_modes )
-  mode = def_modes[ input ].get( input )
 
-  weapons = { sword: Item, bow: Item, magic_missile: Skill }
-  puts 'Select current weapon'.blue
-  input = hash_choice( weapons )
-  weapon = weapons[ input ].get( input )
+  # input = hash_choice( def_modes )
+  input = :dodge
 
-  begin
-    puts 'Enter starting position (1-5)'.blue
-    input = gets.chomp.to_i
+  mode = def_modes[ input ].find_by( name: input )
+  p mode
 
-    if input < 1 || input > 5
-      puts 'bad range'
-      bad_range = true
-    end
-  end while bad_range
+  # weapons = { sword: Item, bow: Item, magic_missile: Skill }
+  # puts 'Select current weapon'.blue
+  # input = hash_choice( weapons )
+  # weapon = weapons[ input ].get( input )
+  #
+  # begin
+  #   puts 'Enter starting position (1-5)'.blue
+  #   input = gets.chomp.to_i
+  #
+  #   if input < 1 || input > 5
+  #     puts 'bad range'
+  #     bad_range = true
+  #   end
+  # end while bad_range
 
-  c.set_fighting_spec( mode, weapon, input )
-  c
+  mode_link = nil
+  if mode.kind_of?( Skill )
+    mode_link = CreatureSkill.find_or_create_by!( creature: c, skill: mode )
+  end
+
+  c.def_mode = mode_link
 end

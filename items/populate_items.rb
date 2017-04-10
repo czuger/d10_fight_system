@@ -26,3 +26,10 @@ _1d8 = Damage.find_or_create_by!( dices_side: 8, nb_dices: 1, bonus: 0 )
 shoot = Skill.find_by( name: :shoot )
 Weapon.find_or_create_by!( name: :bow, difficulty: 2, hp: 2, skill_id: shoot.id, damage_id: _1d8.id, reach: 10 )
 
+_1d6 = Damage.find_or_create_by!( dices_side: 6, nb_dices: 1, bonus: 0 )
+melee = Skill.find_by( name: :melee )
+Weapon.find_or_create_by!( name: :sword, difficulty: 2, hp: 6, skill_id: melee.id, damage_id: _1d6.id, reach: 1 )
+
+shield = Skill.find_by( name: :shield )
+Tool.find_or_create_by!( name: :shield, difficulty: 2, hp: 4, skill_id: shield.id )
+
