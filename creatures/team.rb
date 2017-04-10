@@ -1,12 +1,7 @@
-class Team
+require 'active_record'
 
-  def initialize( name )
-    @name = name
-    @characters_names = []
-  end
+class Team < ActiveRecord::Base
 
-  def add( character_name )
-    @characters_names << character_name
-  end
+ has_many :characters, class_name: 'Character'
 
 end

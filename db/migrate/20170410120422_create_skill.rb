@@ -3,7 +3,9 @@ class CreateSkill < ActiveRecord::Migration[5.0]
 
     create_table :skills do |t|
 
-      t.string :name, null: false
+      t.string :type
+
+      t.string :name, null: false, index: { unique: true }
       t.string :trait, null: false
       t.integer :difficulty, null: false
 

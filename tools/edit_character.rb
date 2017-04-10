@@ -11,8 +11,7 @@ Character.all.each_with_index do |c, i|
   puts "#{i} -> #{c.name}"
 end
 
-# input = gets.to_i
-input = 1
+input = gets.to_i
 if character_hash.has_key?( input )
 
   c = character_hash[ input ]
@@ -22,8 +21,3 @@ if character_hash.has_key?( input )
 else
   puts 'Bad input !!!'.red
 end
-
-c.save!
-
-p c.def_mode.name
-p c.def_mode.level

@@ -5,7 +5,7 @@ class CreateCreature < ActiveRecord::Migration[5.0]
 
       t.string :type, null: false
 
-      t.string :name, null: false
+      t.string :name, null: false, index: { unique: true }
 
       t.integer :str, null: false
       t.integer :coo, null: false
@@ -18,8 +18,8 @@ class CreateCreature < ActiveRecord::Migration[5.0]
       t.integer :default_position, null: false, default: 1
       t.integer :current_position, null: false, default: 1
 
-      t.integer :current_weapon_id
       t.references :def_mode, polymorphic: true
+      t.references :current_weapon, polymorphic: true
 
       t.timestamps
     end

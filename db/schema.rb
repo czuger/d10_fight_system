@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410135555) do
+ActiveRecord::Schema.define(version: 20170410155303) do
 
   create_table "creature_items", force: :cascade do |t|
     t.integer "creature_id",       null: false
@@ -32,22 +32,27 @@ ActiveRecord::Schema.define(version: 20170410135555) do
   end
 
   create_table "creatures", force: :cascade do |t|
-    t.string   "type",                          null: false
-    t.string   "name",                          null: false
-    t.integer  "str",                           null: false
-    t.integer  "coo",                           null: false
-    t.integer  "wil",                           null: false
-    t.integer  "mem",                           null: false
-    t.integer  "hp",                            null: false
-    t.integer  "xp",                default: 0, null: false
-    t.integer  "default_position",  default: 1, null: false
-    t.integer  "current_position",  default: 1, null: false
-    t.integer  "current_weapon_id"
+    t.string   "type",                            null: false
+    t.string   "name",                            null: false
+    t.integer  "str",                             null: false
+    t.integer  "coo",                             null: false
+    t.integer  "wil",                             null: false
+    t.integer  "mem",                             null: false
+    t.integer  "hp",                              null: false
+    t.integer  "xp",                  default: 0, null: false
+    t.integer  "default_position",    default: 1, null: false
+    t.integer  "current_position",    default: 1, null: false
     t.string   "def_mode_type"
     t.integer  "def_mode_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "current_weapon_type"
+    t.integer  "current_weapon_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "team_id"
+    t.index ["current_weapon_type", "current_weapon_id"], name: "index_creatures_on_current_weapon_type_and_current_weapon_id"
     t.index ["def_mode_type", "def_mode_id"], name: "index_creatures_on_def_mode_type_and_def_mode_id"
+    t.index ["name"], name: "index_creatures_on_name", unique: true
+    t.index ["team_id"], name: "index_creatures_on_team_id"
   end
 
   create_table "damages", force: :cascade do |t|
@@ -60,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170410135555) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.string   "type"
     t.string   "name",       null: false
     t.integer  "skill_id"
     t.integer  "difficulty"
@@ -69,10 +75,12 @@ ActiveRecord::Schema.define(version: 20170410135555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["damage_id"], name: "index_items_on_damage_id"
+    t.index ["name"], name: "index_items_on_name", unique: true
     t.index ["skill_id"], name: "index_items_on_skill_id"
   end
 
   create_table "skills", force: :cascade do |t|
+    t.string   "type"
     t.string   "name",       null: false
     t.string   "trait",      null: false
     t.integer  "difficulty", null: false
@@ -81,6 +89,12 @@ ActiveRecord::Schema.define(version: 20170410135555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["damage_id"], name: "index_skills_on_damage_id"
+    t.index ["name"], name: "index_skills_on_name", unique: true
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.index ["name"], name: "index_teams_on_name", unique: true
   end
 
 end

@@ -18,10 +18,12 @@ module Fight
 
       puts "#{name} about to attack #{enemy.name}"
 
-      difficulty = @current_weapon.difficulty
-      difficulty -= @current_weapon.bonus( self ) # level + trait value
+      difficulty = current_weapon.difficulty
+      difficulty -= current_weapon.bonus( self ) # level + trait value
 
-      if @current_weapon.distance
+      p current_weapon
+
+      if current_weapon.distance
         d = distance( enemy )
         difficulty += d
       end
@@ -32,17 +34,17 @@ module Fight
 
       if result.success
 
-        enemy.wound( @current_weapon, result )
-        enemy.def_mode.increase_skill
+        enemy.wound( current_weapon, result )
+        enemy.def_mode.gain_xp
 
         if result.critic
           enemy.def_mode.damage_item
         end
       else
-        @current_weapon.increase_skill
+        current_weapon.gain_xp
 
         if result.critic
-          @current_weapon.damage_item
+          current_weapon.damage_item
         end
       end
     end

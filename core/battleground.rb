@@ -1,14 +1,22 @@
 require_relative '../creatures/character'
 require_relative '../creatures/monsters/imp'
+require_relative '../items/creature_item'
 
 class Battleground
 
-  def initialize
-    @creatures = [ Character.new( :magic ), Character.new( :bowman ), Character.new( :fighter ) ]
+  def initialize( team )
 
-    @creatures += rand( 2 .. 4 ).times.map{ |_| Imp.new }
+    @creatures = team.characters
+
+    @creatures += rand( 2 .. 4 ).times.map{ |i| Imp.generate( self, i ) }
 
     p @creatures.map{ |c| c.name }
+
+    @creatures.each do |c|
+      c.set_start_position
+    end
+
+
   end
 
   def fight_to_death
@@ -38,6 +46,12 @@ class Battleground
 
       # p attacker.side
       # p creature.side
+      p attacker
+      p creature
+      p attacker.current_weapon
+      p attacker.current_weapon.reach
+      p attacker.distance( creature )
+
       re << creature if attacker.enemies?( creature ) && creature.alive? && attacker.distance( creature ) <= attacker.current_weapon.reach
     end
     re

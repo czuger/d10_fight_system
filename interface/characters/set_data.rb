@@ -30,40 +30,46 @@ def hash_choice( hash )
   keys[ choose_number ]
 end
 
-def set_data( c )
+def create_action_link( link_mode, creature )
+
+  if link_mode.kind_of?( Skill )
+    result = CreatureSkill.find_or_create_by!( creature: creature, skill: link_mode )
+  else
+    skill = CreatureSkill.find_or_create_by!( creature: creature, skill: link_mode.skill )
+    result = CreatureItem.find_or_create_by!( creature: creature, item: link_mode, creature_skill: skill ) do |item|
+      item.hp = link_mode.hp
+    end
+  end
+  result
+end
+
+def set_data( creature )
   def_modes = {dodge: Skill, shield: Item } # TODO : parry is hard because it need to work with all weapons
   puts 'Select def mode'.blue
 
-  # input = hash_choice( def_modes )
-  input = :shield
+  input = hash_choice( def_modes )
 
   def_mode = def_modes[ input ].find_by( name: input )
-  p def_modes[ input ]
-  p def_mode
+  creature.def_mode = create_action_link( def_mode, creature )
 
-  # weapons = { sword: Item, bow: Item, magic_missile: Skill }
-  # puts 'Select current weapon'.blue
-  # input = hash_choice( weapons )
-  # weapon = weapons[ input ].get( input )
-  #
-  # begin
-  #   puts 'Enter starting position (1-5)'.blue
-  #   input = gets.chomp.to_i
-  #
-  #   if input < 1 || input > 5
-  #     puts 'bad range'
-  #     bad_range = true
-  #   end
-  # end while bad_range
+  weapons = { sword: Item, bow: Item, magic_missile: Skill }
+  puts 'Select current weapon'.blue
+  input = hash_choice( weapons )
 
-  if def_mode.kind_of?( Skill )
-    def_mode_link = CreatureSkill.find_or_create_by!( creature: c, skill: def_mode )
-  else
-    skill = CreatureSkill.find_or_create_by!( creature: c, skill: def_mode.skill )
-    def_mode_link = CreatureItem.find_or_create_by!( creature: c, item: def_mode, creature_skill: skill ) do |item|
-      item.hp = def_mode.hp
+  weapon = weapons[ input ].find_by( name: input )
+  creature.current_weapon = create_action_link( weapon, creature )
+
+  begin
+    puts 'Enter starting position (1-5)'.blue
+    input = gets.chomp.to_i
+
+    if input < 1 || input > 5
+      puts 'bad range'
+      bad_range = true
+    else
+      creature.default_position = creature.current_position = input
     end
-  end
+  end while bad_range
 
-  c.def_mode = def_mode_link
+  creature.save!
 end

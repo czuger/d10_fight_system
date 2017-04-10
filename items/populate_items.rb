@@ -3,6 +3,7 @@ require 'active_record'
 require_relative 'weapon'
 require_relative '../core/damage'
 require_relative '../skills/skill'
+require_relative '../skills/protection_skill'
 
 # class PopulateItems
 #
