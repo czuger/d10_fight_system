@@ -20,7 +20,7 @@ class CreatureSkill < ActiveRecord::Base
   end
 
   def reach
-    p skill
+    # p skill
     skill.reach
   end
 

@@ -41,7 +41,7 @@ class CreatureItem < ActiveRecord::Base
   end
 
   def damage
-    p item
+    # p item
     item.damage
   end
 

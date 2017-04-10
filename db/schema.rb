@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410155303) do
+ActiveRecord::Schema.define(version: 20170410174323) do
 
   create_table "creature_items", force: :cascade do |t|
     t.integer "creature_id",       null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170410155303) do
     t.integer  "coo",                             null: false
     t.integer  "wil",                             null: false
     t.integer  "mem",                             null: false
-    t.integer  "hp",                              null: false
+    t.integer  "current_hp",                      null: false
     t.integer  "xp",                  default: 0, null: false
     t.integer  "default_position",    default: 1, null: false
     t.integer  "current_position",    default: 1, null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170410155303) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "team_id"
+    t.integer  "max_hp"
     t.index ["current_weapon_type", "current_weapon_id"], name: "index_creatures_on_current_weapon_type_and_current_weapon_id"
     t.index ["def_mode_type", "def_mode_id"], name: "index_creatures_on_def_mode_type_and_def_mode_id"
     t.index ["name"], name: "index_creatures_on_name", unique: true

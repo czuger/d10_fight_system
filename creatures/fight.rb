@@ -21,7 +21,7 @@ module Fight
       difficulty = current_weapon.difficulty
       difficulty -= current_weapon.bonus( self ) # level + trait value
 
-      p current_weapon
+      # p current_weapon
 
       if current_weapon.distance
         d = distance( enemy )
@@ -31,6 +31,7 @@ module Fight
       difficulty += enemy.def_mode.difficulty
 
       result = Roll.new( difficulty )
+      puts "Difficulty : #{difficulty}, roll : #{result.inspect}"
 
       if result.success
 
@@ -41,6 +42,7 @@ module Fight
           enemy.def_mode.damage_item
         end
       else
+        puts "#{name} miss"
         current_weapon.gain_xp
 
         if result.critic

@@ -7,15 +7,15 @@ class Creature < ActiveRecord::Base
 
   include Fight
 
-  belongs_to :def_mode, polymorphic: true
-  belongs_to :current_weapon, polymorphic: true
+  belongs_to :def_mode, polymorphic: true, dependent: :destroy
+  belongs_to :current_weapon, polymorphic: true, dependent: :destroy
 
   def enemies?( creature )
     ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )
   end
 
   def alive?
-    hp > 0
+    current_hp > 0
   end
 
   def initiative
@@ -38,7 +38,7 @@ class Creature < ActiveRecord::Base
   end
 
   def wound( current_weapon, result )
-    p current_weapon
+    # p current_weapon
     hit = current_weapon.damage.roll
     puts "Damage roll = #{hit}"
 
@@ -48,12 +48,16 @@ class Creature < ActiveRecord::Base
     end
 
     puts "#{name} loose #{hit} hp"
-    decrement!( :hp, hit )
-    puts "#{name} die" if hp < 0
+    decrement!( :current_hp, hit )
+    puts "#{name} die" if current_hp < 0
   end
 
   def set_start_position
     update( current_position: default_position )
+  end
+
+  def reset_hp
+    update( current_hp: max_hp )
   end
 
 end

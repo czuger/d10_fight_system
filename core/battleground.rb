@@ -8,12 +8,15 @@ class Battleground
 
     @creatures = team.characters
 
-    @creatures += rand( 2 .. 4 ).times.map{ |i| Imp.generate( self, i ) }
+    Imp.destroy_all
+
+    @creatures += rand( 2 .. 3 ).times.map{ |i| Imp.generate( self, i ) }
 
     p @creatures.map{ |c| c.name }
 
     @creatures.each do |c|
       c.set_start_position
+      c.reset_hp
     end
 
 
@@ -30,7 +33,7 @@ class Battleground
 
   def round
     puts
-    puts '*** New round ***'
+    puts '*** New round ***'.blue
     isc = order_by_initiative
 
     isc.each do |creature|
@@ -46,11 +49,11 @@ class Battleground
 
       # p attacker.side
       # p creature.side
-      p attacker
-      p creature
-      p attacker.current_weapon
-      p attacker.current_weapon.reach
-      p attacker.distance( creature )
+      # p attacker
+      # p creature
+      # p attacker.current_weapon
+      # p attacker.current_weapon.reach
+      # p attacker.distance( creature )
 
       re << creature if attacker.enemies?( creature ) && creature.alive? && attacker.distance( creature ) <= attacker.current_weapon.reach
     end
