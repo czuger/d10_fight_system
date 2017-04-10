@@ -1,6 +1,7 @@
 require_relative '../../creatures/character'
 require_relative '../../skills/magic'
 require_relative '../../skills/creature_skill'
+require_relative '../../items/creature_item'
 
 def hash_choice( hash )
   keys = hash.keys
@@ -34,10 +35,11 @@ def set_data( c )
   puts 'Select def mode'.blue
 
   # input = hash_choice( def_modes )
-  input = :dodge
+  input = :shield
 
-  mode = def_modes[ input ].find_by( name: input )
-  p mode
+  def_mode = def_modes[ input ].find_by( name: input )
+  p def_modes[ input ]
+  p def_mode
 
   # weapons = { sword: Item, bow: Item, magic_missile: Skill }
   # puts 'Select current weapon'.blue
@@ -54,10 +56,14 @@ def set_data( c )
   #   end
   # end while bad_range
 
-  mode_link = nil
-  if mode.kind_of?( Skill )
-    mode_link = CreatureSkill.find_or_create_by!( creature: c, skill: mode )
+  if def_mode.kind_of?( Skill )
+    def_mode_link = CreatureSkill.find_or_create_by!( creature: c, skill: def_mode )
+  else
+    skill = CreatureSkill.find_or_create_by!( creature: c, skill: def_mode.skill )
+    def_mode_link = CreatureItem.find_or_create_by!( creature: c, item: def_mode, creature_skill: skill ) do |item|
+      item.hp = def_mode.hp
+    end
   end
 
-  c.def_mode = mode_link
+  c.def_mode = def_mode_link
 end

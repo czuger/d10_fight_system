@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410124500) do
+ActiveRecord::Schema.define(version: 20170410135555) do
+
+  create_table "creature_items", force: :cascade do |t|
+    t.integer "creature_id",       null: false
+    t.integer "item_id",           null: false
+    t.integer "creature_skill_id", null: false
+    t.integer "hp",                null: false
+    t.index ["creature_id"], name: "index_creature_items_on_creature_id"
+    t.index ["creature_skill_id"], name: "index_creature_items_on_creature_skill_id"
+    t.index ["item_id"], name: "index_creature_items_on_item_id"
+  end
 
   create_table "creature_skills", force: :cascade do |t|
     t.integer "creature_id",             null: false
