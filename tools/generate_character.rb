@@ -1,8 +1,12 @@
+require 'yaml'
+require 'active_record'
 require_relative '../interface/characters/set_data'
 
-FileUtils.mkpath( '../data/characters' )
+db_info = YAML.load( File.open( 'db/config.yml' ).read )
+ActiveRecord::Base.establish_connection( db_info[ 'development' ] )
 
-c = Character.new
+c = Character.generate
+p c
 
 if File.exist?( "../data/characters/#{c.name}.cha" )
   puts 'Character already exist.'

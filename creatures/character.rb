@@ -10,16 +10,17 @@ class Character < Creature
 
   attr_reader :name
 
-  def initialize
+  def self.generate
+    str = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    coo = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    wil = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    mem = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
 
-    @str = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
-    @coo = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
-    @will = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
-    @mem = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    hp = 8 + str - 10
 
-    @hp = 8 + @str - 10
+    name = NameGenerator.generate
 
-    @name = NameGenerator.generate
+    Character.create!( str: str, coo: coo, wil: wil, mem: mem, hp: hp, name: name )
   end
 
   def print

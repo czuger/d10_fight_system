@@ -2,3 +2,5 @@
 
 *.cha
 *.team
+
+*.sqlite3

@@ -1,22 +1,11 @@
+require 'active_record'
+
 require_relative '../skills/protection_skill'
 require_relative 'fight'
 
-class Creature
-
-  attr_reader :str, :coo, :will, :mem
-  attr_reader :current_position, :current_weapon, :def_mode
+class Creature < ActiveRecord::Base
 
   include Fight
-
-  def initialize
-    @str = nil
-    @coo = nil
-    @will = nil
-    @mem = nil
-    @current_position = nil
-    @current_weapon = nil
-    @def_mode = nil
-  end
 
   def enemies?( creature )
     ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )
