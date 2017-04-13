@@ -1,10 +1,14 @@
 require 'active_record'
 
+require_relative '../core/bonus'
+
 class CreatureItem < ActiveRecord::Base
 
   belongs_to :creature
   belongs_to :item
   belongs_to :creature_skill
+
+  include Bonus
 
   def name
     item.name
@@ -20,12 +24,6 @@ class CreatureItem < ActiveRecord::Base
 
   def difficulty
     item.difficulty
-  end
-
-  def bonus( creature )
-    s = self
-    raise "#{creature.inspect} does not have #{s.creature_skill.trait.inspect}" unless creature.respond_to?( s.creature_skill.trait )
-    s.level + creature.send( s.creature_skill.trait ) - 10
   end
 
   def distance
@@ -51,6 +49,12 @@ class CreatureItem < ActiveRecord::Base
       return attacker.str - 10
     end
     0
+  end
+
+  private
+
+  def get_skill_link
+    creature_skill
   end
 
 end

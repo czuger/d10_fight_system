@@ -1,9 +1,13 @@
 require 'active_record'
 
+require_relative '../core/bonus'
+
 class CreatureSkill < ActiveRecord::Base
 
   belongs_to :creature
   belongs_to :skill
+
+  include Bonus
 
   def name
     skill.name
@@ -11,12 +15,6 @@ class CreatureSkill < ActiveRecord::Base
 
   def level
     xp / 50 / 2
-  end
-
-  def bonus( creature )
-    s = self
-    raise "#{creature.inspect} does not have #{s.skill.trait.inspect}" unless creature.respond_to?( s.skill.trait )
-    s.level + creature.send( s.skill.trait ) - 10
   end
 
   def reach
@@ -50,6 +48,12 @@ class CreatureSkill < ActiveRecord::Base
 
   def damage_bonus( _ )
     0
+  end
+
+  private
+
+  def get_skill_link
+    self
   end
 
 end

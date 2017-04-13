@@ -11,4 +11,8 @@ class Roll
     @sum = r1 + r2
   end
 
+  def to_s
+    [ ('critic' if @critic), @success ? 'success' : 'failure', @sum ].compact.join( ' - ' )
+  end
+
 end

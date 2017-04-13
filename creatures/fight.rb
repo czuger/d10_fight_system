@@ -18,20 +18,30 @@ module Fight
 
       puts "#{name} about to attack #{enemy.name}"
 
-      difficulty = current_weapon.difficulty
-      difficulty -= current_weapon.bonus( self ) # level + trait value
+      detail = []
 
+      difficulty = current_weapon.difficulty
+      detail << [ current_weapon.name, difficulty ]
+
+      bonus = current_weapon.bonus( self )# level + trait value
+      difficulty += bonus.first # Already minus
+      detail += bonus.second
       # p current_weapon
 
       if current_weapon.distance
         d = distance( enemy )
+        detail << [ :distance, d ]
         difficulty += d
       end
 
       difficulty += enemy.def_mode.difficulty
+      detail << [ :enemy_def_mode, enemy.def_mode.difficulty ]
 
       result = Roll.new( difficulty )
-      puts "Difficulty : #{difficulty}, roll : #{result.inspect}"
+
+      p detail
+      detail_string = detail.map{ |e| e.join( ' : ' ) }.join( ', ' )
+      puts "Difficulty : #{difficulty}(#{difficulty+10}), roll : (#{result.to_s}), details : #{detail_string}".yellow
 
       if result.success
 
