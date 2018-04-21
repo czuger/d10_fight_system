@@ -4,7 +4,7 @@ require 'yaml'
 damages = {}
 rolls = {}
 
-File.open('damages_table.txt','r') do |file|
+File.open('core/damages/raw_data/damages_table.txt','r') do |file|
   file.readlines.each_with_index do |line, index|
     line = line.chomp.split( "\t" )
     if index == 0
@@ -22,6 +22,6 @@ File.open('damages_table.txt','r') do |file|
   end
 end
 
-File.open('../damages_table.yaml','w') do |f|
+File.open('data/damages_table.yaml','w') do |f|
   f.write(damages.to_yaml)
 end

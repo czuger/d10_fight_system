@@ -9,7 +9,7 @@ class DamagesHandler
   MIN_ROLL_VALUE = 1
   
   def initialize
-    @damages_table = YAML.from_file('damages_table.yaml')
+    @damages_table = YAML.load_file('data/damages_table.yaml')
   end
 
   def wound( strength_value, weapon_dice, armor_protection )
@@ -22,11 +22,13 @@ class DamagesHandler
   def frame_strength_value( strength_value )
     strength_value = MAX_STRENGTH_VALUE if strength_value > MAX_STRENGTH_VALUE
     strength_value = MIN_STRENGTH_VALUE if strength_value < MIN_STRENGTH_VALUE
+    strength_value
   end
 
   def frame_roll_value( roll_value )
     roll_value = MAX_ROLL_VALUE if roll_value > MAX_ROLL_VALUE
     roll_value = MIN_ROLL_VALUE if roll_value < MIN_ROLL_VALUE
+    roll_value
   end
   
 end
