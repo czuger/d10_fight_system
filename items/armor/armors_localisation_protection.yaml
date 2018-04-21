@@ -1,0 +1,19 @@
+---
+:hands:
+- :mail_gauntlets
+- :plate_gauntlets
+:shoulders:
+- :plate_spaulders
+- :mail_shirt
+:torso:
+- :mail_shirt
+- :breastplate
+:head:
+- :cerveliere
+- :helmet
+- :bassinet
+:legs:
+- :mail_shirt
+- :plate_leggings
+:feets:
+- :sorlets

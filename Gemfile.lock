@@ -76,6 +76,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  activesupport
   colorize
   hazard (~> 1.1.0)
   sqlite3

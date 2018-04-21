@@ -1,14 +1,14 @@
-	Mail gauntlets	Plate gauntles	Sorlets	Mail shirt	Plate leggings	Breastplate	Cerveliere	Helmet	Bassinet
-Sword	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Axe	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Mace	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Staff	-4	-6	-6	-5	-6	-8	-4	-6	-8
-Dagger	-6	-8	-8	-7	-8	-10	-6	-8	-10
-Spear	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Arrow	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Bolt	0	0	0	0	0	0	0	0	0
-Cold	0	0	0	0	0	0	0	0	0
-Heat	0	0	0	0	0	0	0	0	0
-Force	-2	-4	-4	-3	-4	-6	-2	-4	-6
-Electricity	2	4	4	3	4	6	2	4	6
-Necrotic	0	0	0	0	0	0	0	0	0
+	Mail gauntlets	Plate gauntlets	Plate spaulders	Sorlets	Mail shirt	Plate leggings	Breastplate	Cerveliere	Helmet	Bassinet
+Sword	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Axe	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Mace	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Staff	-4	-6	-6	-6	-5	-6	-8	-4	-6	-8
+Dagger	-6	-8	-8	-8	-7	-8	-10	-6	-8	-10
+Spear	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Arrow	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Bolt	0	0	0	0	0	0	0	0	0	0
+Cold	0	0	0	0	0	0	0	0	0	0
+Heat	0	0	0	0	0	0	0	0	0	0
+Force	-2	-4	-4	-4	-3	-4	-6	-2	-4	-6
+Electricity	2	4	4	4	3	4	6	2	4	6
+Necrotic	0	0	0	0	0	0	0	0	0	0

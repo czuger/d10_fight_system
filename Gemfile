@@ -5,6 +5,7 @@ source "https://rubygems.org"
 
 gem 'colorize'
 gem 'activerecord'
+gem 'activesupport'
 gem 'sqlite3'
 gem 'hazard', '~> 1.1.0'
 

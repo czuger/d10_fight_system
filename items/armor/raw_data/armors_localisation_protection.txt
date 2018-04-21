@@ -1,0 +1,7 @@
+	Mail gauntlets	Plate gauntles	Plate spaulders	Sorlets	Mail shirt	Plate leggings	Breastplate	Cerveliere	Helmet	Bassinet
+Hands	X	X
+Shoulders			X		X
+Torso					X		X
+Head								X	X	X
+Legs					X	X
+Feets				X

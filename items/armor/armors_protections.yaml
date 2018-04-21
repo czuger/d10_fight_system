@@ -1,7 +1,8 @@
 ---
 :sword:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -11,7 +12,8 @@
   :bassinet: 6
 :axe:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -21,7 +23,8 @@
   :bassinet: 6
 :mace:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -31,7 +34,8 @@
   :bassinet: 6
 :staff:
   :mail_gauntlets: 4
-  :plate_gauntles: 6
+  :plate_gauntlets: 6
+  :plate_spaulders: 6
   :sorlets: 6
   :mail_shirt: 5
   :plate_leggings: 6
@@ -41,7 +45,8 @@
   :bassinet: 8
 :dagger:
   :mail_gauntlets: 6
-  :plate_gauntles: 8
+  :plate_gauntlets: 8
+  :plate_spaulders: 8
   :sorlets: 8
   :mail_shirt: 7
   :plate_leggings: 8
@@ -51,7 +56,8 @@
   :bassinet: 10
 :spear:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -61,7 +67,8 @@
   :bassinet: 6
 :arrow:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -71,7 +78,8 @@
   :bassinet: 6
 :bolt:
   :mail_gauntlets: 0
-  :plate_gauntles: 0
+  :plate_gauntlets: 0
+  :plate_spaulders: 0
   :sorlets: 0
   :mail_shirt: 0
   :plate_leggings: 0
@@ -81,7 +89,8 @@
   :bassinet: 0
 :cold:
   :mail_gauntlets: 0
-  :plate_gauntles: 0
+  :plate_gauntlets: 0
+  :plate_spaulders: 0
   :sorlets: 0
   :mail_shirt: 0
   :plate_leggings: 0
@@ -91,7 +100,8 @@
   :bassinet: 0
 :heat:
   :mail_gauntlets: 0
-  :plate_gauntles: 0
+  :plate_gauntlets: 0
+  :plate_spaulders: 0
   :sorlets: 0
   :mail_shirt: 0
   :plate_leggings: 0
@@ -101,7 +111,8 @@
   :bassinet: 0
 :force:
   :mail_gauntlets: 2
-  :plate_gauntles: 4
+  :plate_gauntlets: 4
+  :plate_spaulders: 4
   :sorlets: 4
   :mail_shirt: 3
   :plate_leggings: 4
@@ -111,7 +122,8 @@
   :bassinet: 6
 :electricity:
   :mail_gauntlets: -2
-  :plate_gauntles: -4
+  :plate_gauntlets: -4
+  :plate_spaulders: -4
   :sorlets: -4
   :mail_shirt: -3
   :plate_leggings: -4
@@ -121,7 +133,8 @@
   :bassinet: -6
 :necrotic:
   :mail_gauntlets: 0
-  :plate_gauntles: 0
+  :plate_gauntlets: 0
+  :plate_spaulders: 0
   :sorlets: 0
   :mail_shirt: 0
   :plate_leggings: 0
