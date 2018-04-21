@@ -6,5 +6,6 @@ source "https://rubygems.org"
 gem 'colorize'
 gem 'activerecord'
 gem 'sqlite3'
+gem 'hazard', '~> 1.1.0'
 
-gem 'standalone_migrations', :git => 'ssh://github.com/czuger/standalone-migrations'
+gem 'standalone_migrations', :git => 'https://github.com/czuger/standalone-migrations'

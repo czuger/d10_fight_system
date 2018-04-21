@@ -1,0 +1,131 @@
+---
+:sword:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:axe:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:mace:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:staff:
+  :mail_gauntlets: 4
+  :plate_gauntles: 6
+  :sorlets: 6
+  :mail_shirt: 5
+  :plate_leggings: 6
+  :breastplate: 8
+  :cerveliere: 4
+  :helmet: 6
+  :bassinet: 8
+:dagger:
+  :mail_gauntlets: 6
+  :plate_gauntles: 8
+  :sorlets: 8
+  :mail_shirt: 7
+  :plate_leggings: 8
+  :breastplate: 10
+  :cerveliere: 6
+  :helmet: 8
+  :bassinet: 10
+:spear:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:arrow:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:bolt:
+  :mail_gauntlets: 0
+  :plate_gauntles: 0
+  :sorlets: 0
+  :mail_shirt: 0
+  :plate_leggings: 0
+  :breastplate: 0
+  :cerveliere: 0
+  :helmet: 0
+  :bassinet: 0
+:cold:
+  :mail_gauntlets: 0
+  :plate_gauntles: 0
+  :sorlets: 0
+  :mail_shirt: 0
+  :plate_leggings: 0
+  :breastplate: 0
+  :cerveliere: 0
+  :helmet: 0
+  :bassinet: 0
+:heat:
+  :mail_gauntlets: 0
+  :plate_gauntles: 0
+  :sorlets: 0
+  :mail_shirt: 0
+  :plate_leggings: 0
+  :breastplate: 0
+  :cerveliere: 0
+  :helmet: 0
+  :bassinet: 0
+:force:
+  :mail_gauntlets: 2
+  :plate_gauntles: 4
+  :sorlets: 4
+  :mail_shirt: 3
+  :plate_leggings: 4
+  :breastplate: 6
+  :cerveliere: 2
+  :helmet: 4
+  :bassinet: 6
+:electricity:
+  :mail_gauntlets: -2
+  :plate_gauntles: -4
+  :sorlets: -4
+  :mail_shirt: -3
+  :plate_leggings: -4
+  :breastplate: -6
+  :cerveliere: -2
+  :helmet: -4
+  :bassinet: -6
+:necrotic:
+  :mail_gauntlets: 0
+  :plate_gauntles: 0
+  :sorlets: 0
+  :mail_shirt: 0
+  :plate_leggings: 0
+  :breastplate: 0
+  :cerveliere: 0
+  :helmet: 0
+  :bassinet: 0
