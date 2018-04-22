@@ -1,8 +1,8 @@
 require 'colorize'
 
 require_relative 'creature'
-require_relative '../items/tool'
-require_relative '../items/weapon'
+require_relative '../items/old/tool'
+require_relative '../items/old/weapon'
 require_relative 'name_generator'
 
 class Character < Creature
@@ -10,14 +10,14 @@ class Character < Creature
   def self.generate
     str = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
     coo = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
-    wil = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
+    will = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
     mem = rand( 1 .. 6 ) + rand( 1 .. 6 ) + 3
 
     hp = 8 + str - 10
 
     name = NameGenerator.generate
 
-    Character.create!( str: str, coo: coo, wil: wil, mem: mem, hp: hp, name: name )
+    Character.new( str, coo, will, mem, hp, name )
   end
 
   def print

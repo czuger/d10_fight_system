@@ -17,6 +17,7 @@ GEM
       simplecov (<= 0.13)
     colorize (0.8.1)
     concurrent-ruby (1.0.5)
+    constructor (2.0.0)
     docile (1.1.5)
     hazard (1.2.0)
     i18n (1.0.1)
@@ -46,6 +47,7 @@ DEPENDENCIES
   bundler (~> 1.13)
   codeclimate-test-reporter (~> 1.0.0)
   colorize
+  constructor
   hazard (~> 1.2.0)
   minitest (~> 5.0)
   mocha

@@ -1,6 +1,6 @@
 require 'active_record'
 
-require_relative '../core/bonus'
+require_relative '../core/re/bonus'
 
 class CreatureItem < ActiveRecord::Base
 

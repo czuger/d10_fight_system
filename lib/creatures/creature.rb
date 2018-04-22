@@ -3,12 +3,21 @@ require 'active_record'
 require_relative '../skills/protection_skill'
 require_relative 'fight'
 
-class Creature < ActiveRecord::Base
+class Creature
 
   include Fight
 
-  belongs_to :def_mode, polymorphic: true, dependent: :destroy
-  belongs_to :current_weapon, polymorphic: true, dependent: :destroy
+  # belongs_to :def_mode, polymorphic: true, dependent: :destroy
+  # belongs_to :current_weapon, polymorphic: true, dependent: :destroy
+
+  def initialize( str, coo, will, mem, hp, name )
+    @str = str
+    @coo = coo
+    @will = will
+    @mem = mem
+    @hp = hp
+    @name = name
+  end
 
   def enemies?( creature )
     ( heroes? && !creature.heroes? ) || ( !heroes? && creature.heroes? )

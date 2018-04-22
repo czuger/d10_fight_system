@@ -1,6 +1,6 @@
 require_relative '../creatures/character'
 require_relative '../creatures/monsters/imp'
-require_relative '../items/creature_item'
+require_relative '../items/old/creature_item'
 
 class Battleground
 

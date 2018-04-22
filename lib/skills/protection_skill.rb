@@ -1,5 +1,5 @@
 require_relative 'skill'
-require_relative '../items/damage_item'
+require_relative '../items/old/damage_item'
 
 class ProtectionSkill < Skill
 
