@@ -25,7 +25,7 @@ module Fight
   def weapon_attack_check( attack_attribute, attack_skill, weapon_difficulty, defence_value )
     difficulty = weapon_difficulty + defence_value
     result = Check.new( attack_attribute, attack_skill ).roll( difficulty )
-    result.print_roll_detail
+    puts result.to_s
   end
 
   # def fight( bg )

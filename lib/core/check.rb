@@ -4,6 +4,10 @@ class Check
 
   attr_reader :success, :critic, :score, :roll, :status
 
+  RESULT_COLORS = {
+      'success' => :blue, 'critical success' => :green, 'critical failure' => :red, 'failure' => :yellow
+  }
+
   def initialize( attribute, skill=0 )
     @attribute = attribute
     @skill = skill
@@ -43,15 +47,16 @@ class Check
   end
 
   def to_s
-    final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}, "
-    final_string += "roll malus = #{@malus}, #{@roll.result}+#{@bonus}-> >= 10+#{@malus} : "
-    final_string += [ ('critical' if @critic), @success ? 'success' : 'failure' ].compact.join( ' ' )
-  end
-
-  def print_roll_detail
-    puts "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}, roll malus: #{@malus},"
-    puts "#{@roll.result}+#{@bonus}-#{@malus}=#{@roll.result+@bonus-@malus} -> " + [ ('critical' if @critic), @success ? 'success' : 'failure' ].compact.join( ' ' )
-    puts
+    # final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}, "
+    # final_string += "roll malus = #{@malus}, #{@roll.result}+#{@bonus}-> >= 10+#{@malus} : "
+    result_string = [ ('critical' if @critic), @success ? 'success' : 'failure' ].compact.join( ' ' )
+    final_string = result_string.colorize( color: RESULT_COLORS[result_string] ) + ': '
+    final_string += "#{@roll.result}+" + "#{@bonus}".colorize(:blue) + '-' + "#{@malus}".colorize(:red)
+    final_string += '=' + "#{@roll.result+@bonus-@malus}".colorize( color: RESULT_COLORS[result_string] )
+    final_string += " (roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, "
+    final_string += "bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}".colorize(:blue)
+    final_string += ', ' + "malus: #{@malus})".colorize(:red)
+    final_string
   end
 
 end
