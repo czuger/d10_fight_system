@@ -1,6 +1,6 @@
 require 'yaml'
 require 'active_record'
-require_relative '../interface/characters/set_data'
+require_relative '../interface/characters/b'
 
 db_info = YAML.load( File.open( 'db/config.yml' ).read )
 ActiveRecord::Base.establish_connection( db_info[ 'development' ] )
