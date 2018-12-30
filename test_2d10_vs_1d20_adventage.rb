@@ -1,6 +1,8 @@
 require 'hazard'
 require 'pp'
 
+require_relative 'lib/core/check2d10'
+
 _2d10 = {}
 _1d20 = {}
 
