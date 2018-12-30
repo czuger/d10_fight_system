@@ -10,4 +10,4 @@ require 'mocha/minitest'
 require 'pp'
 
 require_relative '../lib/core/damages/damages_handler'
-
+require_relative '../lib/core/check2d10'
