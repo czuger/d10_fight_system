@@ -2,7 +2,7 @@ require 'hazard'
 
 class Check
 
-  attr_reader :success, :critic, :score, :roll, :status
+  attr_reader :success, :critic, :score, :roll, :status, :kept_dices
 
   RESULT_COLORS = { success: :blue, critical_success: :green,
                     critical_failure: :red, failure: :yellow }.freeze
@@ -11,6 +11,20 @@ class Check
     @attribute = attribute
     @skill = skill
     @success = @critic = nil
+  end
+
+  def roll(difficulty: 10, bonus: 0, advantage: false)
+    @misc_bonus = bonus
+    @bonus = @attribute - 10 + @skill + @misc_bonus
+    @malus = difficulty
+    @advantage = advantage
+
+    roll_dices
+
+    set_results
+    set_status
+
+    self
   end
 
   def success?
