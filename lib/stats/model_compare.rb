@@ -5,12 +5,13 @@ require_relative '../core/check2d10'
 require_relative '../core/check_d20'
 
 class ModelCompare
-  
+
+  DIFFICULTY_TEXT= { 4 => :easy, 6 => :easy, 8 => :easy, 10 => :medium, 12 => :hard, 14 => :hard, 16 => :hard }
+
   def initialize( advantage= false )
     @results= {}    
     @advantage= advantage
   end
-
 
   def compute_results( steps_enumerator )
     steps_enumerator.each do |target|
@@ -32,8 +33,33 @@ class ModelCompare
       puts "#{status.capitalize.to_s.gsub( '_', ' ' )}\t" + keys.map{ |k| (@results[k][status]/@results[k][:sum]).round(3).to_s.gsub( '.', ',' ) }.join( "\t" )
     end
   end
+
+  def results_to_html
+    keys = @results.keys.sort
+
+    header = keys.map{ |k| "<th>#{k[4..-1]}</th>" }.join( '' )
+    header = "<tr>#{header}</tr>"
+
+    body = ''
+    [:critical_failure, :failure, :success, :critical_success].each do |status|
+      body_line = "<td>#{status.capitalize.to_s.gsub( '_', ' ' )}</td>" + keys.map{ |k| "<td class='%s'>%s</td>" % [ key_to_class(k), ((@results[k][status]*100/@results[k][:sum]).round(1).to_s.gsub( '.', ',' ) + ' &#37;') ] }.join( '' )
+      body += "<tr>#{body_line}</tr>"
+    end
+
+    table = "<table>#{header}#{body}</table>"
+    puts table
+  end
   
   private
+
+  def key_to_class(key)
+    match = key.match( /\d+ Target  ?(\d+), \d?d(\d+)/ )
+
+    difficulty = match[1]
+    dice = match[2]
+
+    '%s_%s' % [ DIFFICULTY_TEXT[difficulty.to_i], dice]
+  end
 
   def permutations_d20
     if @advantage
