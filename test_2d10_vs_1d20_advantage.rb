@@ -6,40 +6,46 @@ require_relative 'lib/core/check_d20'
 
 $results = {}
 
-runs = 50000
-$advantage = true
-
-def increase_hashes_value(difficulty, dice, result)
-  label = 'Difficulty %2d, dice %2d' % [ difficulty, dice ]
-  $results[label] ||= {}
-  $results[label][result.status] ||= 0
-  $results[label][result.status] += 1
+def difficulty_key(difficulty, dice)
+  '%2d%2d Bonus %2d, dice %2d' % [ difficulty, dice, difficulty-10, dice ]
 end
 
-def check_2d10(difficulty, dice)
-    result = Check2d10.new.roll( difficulty: difficulty, advantage: $advantage )
+def increase_hashes_value(difficulty, dice, result)
+  label = difficulty_key(difficulty, dice)
+  $results[label] ||= {}
+  $results[label][result.status] ||= 0.0
+  $results[label][result.status] += 1.0
+
+  $results[label][:sum] ||= 0.0
+  $results[label][:sum] += 1.0
+
+end
+
+def check_2d10(difficulty, dice, roll)
+    result = Check2d10.new.roll( difficulty: difficulty, advantage: false, rolls: roll )
     increase_hashes_value difficulty, dice, result
 end
 
-def check_d20(difficulty, dice)
-  result = CheckD20.new.roll( difficulty: difficulty, advantage: $advantage )
+def check_d20(difficulty, dice, roll)
+  result = CheckD20.new.roll( difficulty: difficulty, advantage: false, rolls: roll )
   increase_hashes_value difficulty, dice, result
 end
 
-1.upto( runs ).each do
-  check_d20(9, 20)
-  check_d20(10, 20)
-  check_d20(11, 20)
+(-1..1).each do |difficulty|
+  1.upto(20).to_a.repeated_permutation(1).each do |roll|
+    check_d20(difficulty+10, 20, roll)
+  end
 
-  check_2d10(9, 10)
-  check_2d10(10, 10)
-  check_2d10(11, 10)
+  1.upto(10).to_a.repeated_permutation(2).each do |roll|
+    check_2d10(difficulty+10, 10, roll)
+  end
 end
 
-keys = $results.keys.sort
+pp $results
 
-puts "\t" + keys.join( "\t" )
+keys = $results.keys.sort
+puts "\t" + keys.map{ |k| k[4..-1] }.join( "\t" )
 
 [:critical_failure, :failure, :success, :critical_success].each do |status|
-  puts "#{status.capitalize.to_s.gsub( '_', ' ' )}\t" + keys.map{ |k| (($results[k][status].to_f)/runs).round(3).to_s.gsub( '.', ',' ) }.join( "\t" )
+  puts "#{status.capitalize.to_s.gsub( '_', ' ' )}\t" + keys.map{ |k| ($results[k][status]/$results[k][:sum]).round(2).to_s.gsub( '.', ',' ) }.join( "\t" )
 end

@@ -10,13 +10,11 @@ class CheckD20 < Check
     @critic = [ 1, 20 ].include?( @kept_dices )
   end
 
-  def roll_dices
+  def roll_dices(roll)
     if @advantage
-      @roll = Hazard.s2d20
-      @kept_dices = @roll.rolls.sort.reverse.first
+      @kept_dices = roll.sort.reverse.first
     else
-      @roll = Hazard.d20
-      @kept_dices = @roll
+    @kept_dices = roll.is_a?(Array) ? roll.first : roll
     end
   end
 end

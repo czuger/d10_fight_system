@@ -10,19 +10,18 @@ class Check2d10 < Check
     @critic = @kept_dices[0] == @kept_dices[1]
   end
 
-  def roll_dices
+  def roll_dices(roll= nil)
+    roll = roll || Hazard.s2d10.rolls
     if @advantage
-      @roll = Hazard.s3d10
-      @kept_dices = keep_dices_in_advantage_case
+      @kept_dices = keep_dices_in_advantage_case(roll)
     else
-      @roll = Hazard.s2d10
-      @kept_dices = @roll.rolls
+      @kept_dices = roll
     end
   end
 
-  def keep_dices_in_advantage_case
+  def keep_dices_in_advantage_case(roll)
     kept_rolls = { roll_keeping_score: -1 }
-    @roll.rolls.combination(2).each do |comb|
+    roll.combination(2).each do |comb|
       r = compute_results(comb)
       if r[:roll_keeping_score] > kept_rolls[:roll_keeping_score]
         kept_rolls = r

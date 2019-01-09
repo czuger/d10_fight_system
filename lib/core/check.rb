@@ -13,13 +13,13 @@ class Check
     @success = @critic = nil
   end
 
-  def roll(difficulty: 10, bonus: 0, advantage: false)
+  def roll(difficulty: 10, bonus: 0, advantage: false, rolls: nil)
     @misc_bonus = bonus
     @bonus = @attribute - 10 + @skill + @misc_bonus
     @malus = difficulty
     @advantage = advantage
 
-    roll_dices
+    roll_dices(rolls)
 
     set_results
     set_status
