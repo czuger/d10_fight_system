@@ -6,7 +6,7 @@ class CheckD20 < Check
 
   def set_results
     @score = @kept_dices + @bonus
-    @success = @score - @malus >= 0
+    @success = @score >= 10
     @critic = [ 1, 20 ].include?( @kept_dices )
   end
 

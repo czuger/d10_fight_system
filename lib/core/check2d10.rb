@@ -5,9 +5,15 @@ class Check2d10 < Check
   private
 
   def set_results
-    @score = @kept_dices.reduce(:+) + @bonus
-    @success = @score - @malus >= 0
+    @score = @kept_dices.reduce(:+)
+    target = 10-@bonus
+    @success = (@score >= target)
     @critic = @kept_dices[0] == @kept_dices[1]
+
+    # if @critic
+    #   puts "Kept dices = #{@kept_dices}, bonus = #{@bonus}, score = #{@score}, target = #{target}, success = #{@success}, critic = #{@critic}"
+    # end
+
   end
 
   def roll_dices(roll= nil)
@@ -31,8 +37,10 @@ class Check2d10 < Check
   end
 
   def compute_results(dices)
-    score = dices.reduce(:+) + @bonus
-    success = score - @malus >= 0
+    score = dices.reduce(:+)
+    target = 10-@bonus
+    success = (score >= target)
+
     critic = dices[0] == dices[1]
 
     roll_keeping_score = 0

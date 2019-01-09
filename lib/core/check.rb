@@ -13,10 +13,8 @@ class Check
     @success = @critic = nil
   end
 
-  def roll(difficulty: 10, bonus: 0, advantage: false, rolls: nil)
-    @misc_bonus = bonus
-    @bonus = @attribute - 10 + @skill + @misc_bonus
-    @malus = difficulty
+  def roll(target: 0, advantage: false, rolls: nil)
+    @bonus = @attribute - 10 + @skill + target - 10
     @advantage = advantage
 
     roll_dices(rolls)
@@ -51,19 +49,19 @@ class Check
 
 
   def to_s
-    # final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}, "
-    # final_string += "roll malus = #{@malus}, #{@roll.result}+#{@bonus}-> >= 10+#{@malus} : "
+    # final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}, "
+    # final_string += "roll malus = #{@malus}, #{@roll.result}+#{@target}-> >= 10+#{@malus} : "
     result_string = [ (:critical if @critic), @success ? :success : :failure ].compact.join( ' ' )
 
     final_string = result_string.colorize( color: RESULT_COLORS[result_string] ) + ': '
 
-    final_string += "#{@roll.result}+" + "#{@bonus}".colorize(:blue) + '-' + "#{@malus}".colorize(:red)
+    final_string += "#{@roll.result}+" + "#{@target}".colorize(:blue) + '-' + "#{@malus}".colorize(:red)
 
-    final_string += '=' + "#{@roll.result+@bonus-@malus}".colorize( color: RESULT_COLORS[result_string] )
+    final_string += '=' + "#{@roll.result+@target-@malus}".colorize( color: RESULT_COLORS[result_string] )
 
     final_string += " (roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, "
 
-    final_string += "bonus: #{@attribute-10}+#{@skill}+#{@misc_bonus}=#{@bonus}".colorize(:blue)
+    final_string += "target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}".colorize(:blue)
 
     final_string += ', ' + "malus: #{@malus})".colorize(:red)
 
