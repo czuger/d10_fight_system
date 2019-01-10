@@ -41,6 +41,7 @@ class Check2d10 < Check
   end
 
   def roll_dices(roll)
+    @roll = roll
     case @roll_type
       when :advantage
         @roll ||= Hazard.s3d10.rolls

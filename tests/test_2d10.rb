@@ -15,22 +15,22 @@ class Test2d10 < Minitest::Test
   end
 
   def test_advantaged_rolls
-    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 10, 5, 1 ] ).status
-    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 5, 10, 1 ] ).status
-    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 5, 1, 10 ] ).status
+    assert_equal :success, @r.roll( roll_type: :advantage, target: 15, rolls: [ 10, 5, 1 ] ).status
+    assert_equal :success, @r.roll( roll_type: :advantage, target: 15, rolls: [ 5, 10, 1 ] ).status
+    assert_equal :success, @r.roll( roll_type: :advantage, target: 15, rolls: [ 5, 1, 10 ] ).status
 
-    assert_equal :failure, @r.roll( advantage: true, target: 15, rolls: [ 9, 5, 1 ] ).status
+    assert_equal :failure, @r.roll( roll_type: :advantage, target: 15, rolls: [ 9, 5, 1 ] ).status
 
-    assert_equal :critical_success, @r.roll( advantage: true, target: 15, rolls: [ 10, 10, 2 ] ).status
-    assert_equal :critical_failure, @r.roll( advantage: true, target: 15, rolls: [ 5, 5, 5 ] ).status
-    assert_equal :failure, @r.roll( advantage: true, target: 15, rolls: [ 5, 5, 1 ] ).status
+    assert_equal :critical_success, @r.roll( roll_type: :advantage, target: 15, rolls: [ 10, 10, 2 ] ).status
+    assert_equal :critical_failure, @r.roll( roll_type: :advantage, target: 15, rolls: [ 5, 5, 5 ] ).status
+    assert_equal :failure, @r.roll( roll_type: :advantage, target: 15, rolls: [ 5, 5, 1 ] ).status
 
-    assert_equal :critical_failure, @r.roll( advantage: true, target: 1, rolls: [ 1, 1, 1 ] ).status
-    assert_equal :success, @r.roll( advantage: true, target: 1, rolls: [ 1, 1, 2 ] ).status
+    assert_equal :critical_failure, @r.roll( roll_type: :advantage, target: 1, rolls: [ 1, 1, 1 ] ).status
+    assert_equal :success, @r.roll( roll_type: :advantage, target: 1, rolls: [ 1, 1, 2 ] ).status
 
-    assert_equal :critical_success, @r.roll( advantage: true, target: 20, rolls: [ 10, 10, 10 ] ).status
-    assert_equal :critical_success, @r.roll( advantage: true, target: 20, rolls: [ 9, 10, 10 ] ).status
-    assert_equal :failure, @r.roll( advantage: true, target: 20, rolls: [ 9, 9, 10 ] ).status
+    assert_equal :critical_success, @r.roll( roll_type: :advantage, target: 20, rolls: [ 10, 10, 10 ] ).status
+    assert_equal :critical_success, @r.roll( roll_type: :advantage, target: 20, rolls: [ 9, 10, 10 ] ).status
+    assert_equal :failure, @r.roll( roll_type: :advantage, target: 20, rolls: [ 9, 9, 10 ] ).status
   end
 
 end
