@@ -17,7 +17,7 @@
 
 You take the dice that have the highest value, not the dice that are the best for you. 
 This mean that if you roll [5, 5, 7] and have to reach 10, you take [5, 7] and not [5, 5]. 
-Otherwise you would have a too high critical success ratio (with a +5 bonus, nearly 1/4 of the rolls would be critical hits).
+Otherwise you would have a too high critical success ratio (if you have to score 5 and more, nearly 1/4 of the rolls would be critical hits).
 
 Also, you have a critical failure only if the **three** rolled dice are equal. 
 As for the critical successes, this rule prevent a too high critical failure ratio.
