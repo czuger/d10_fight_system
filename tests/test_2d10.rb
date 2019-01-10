@@ -6,18 +6,31 @@ class Test2d10 < Minitest::Test
     @r = Check2d10.new
   end
 
-  def test_rolls
-    Kernel.stubs(:rand).returns(1)
-    assert_equal :critical_failure, @r.roll.status
+  def test_regular_rolls
+    assert_equal :success, @r.roll( target: 15, rolls: [ 10, 5 ] ).status
+    assert_equal :failure, @r.roll( target: 15, rolls: [ 9, 5 ] ).status
 
-    Kernel.stubs(:rand).returns(5)
-    assert_equal :critical_success,  @r.roll.status
+    assert_equal :critical_success, @r.roll( target: 15, rolls: [ 10, 10 ] ).status
+    assert_equal :critical_failure, @r.roll( target: 15, rolls: [ 5, 5 ] ).status
   end
 
-  def test_advantage
-    Kernel.stubs(:rand).returns(10)
+  def test_advantaged_rolls
+    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 10, 5, 1 ] ).status
+    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 5, 10, 1 ] ).status
+    assert_equal :success, @r.roll( advantage: true, target: 15, rolls: [ 5, 1, 10 ] ).status
 
-    assert_equal [10, 10], @r.roll.kept_dices
+    assert_equal :failure, @r.roll( advantage: true, target: 15, rolls: [ 9, 5, 1 ] ).status
+
+    assert_equal :critical_success, @r.roll( advantage: true, target: 15, rolls: [ 10, 10, 2 ] ).status
+    assert_equal :critical_failure, @r.roll( advantage: true, target: 15, rolls: [ 5, 5, 5 ] ).status
+    assert_equal :failure, @r.roll( advantage: true, target: 15, rolls: [ 5, 5, 1 ] ).status
+
+    assert_equal :critical_failure, @r.roll( advantage: true, target: 1, rolls: [ 1, 1, 1 ] ).status
+    assert_equal :success, @r.roll( advantage: true, target: 1, rolls: [ 1, 1, 2 ] ).status
+
+    assert_equal :critical_success, @r.roll( advantage: true, target: 20, rolls: [ 10, 10, 10 ] ).status
+    assert_equal :critical_success, @r.roll( advantage: true, target: 20, rolls: [ 9, 10, 10 ] ).status
+    assert_equal :failure, @r.roll( advantage: true, target: 20, rolls: [ 9, 9, 10 ] ).status
   end
 
 end

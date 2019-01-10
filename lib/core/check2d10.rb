@@ -48,6 +48,17 @@ class Check2d10 < Check
     success = (score >= target)
 
     critic = dices[0] == dices[1]
+
+    if dices[0] == dices[1] && dices[1] == 1
+      success = false
+      critic = true
+    end
+
+    if dices[0] == dices[1] && dices[1] == 10
+      success = true
+      critic = true
+    end
+
     [ score, success, critic ]
   end
 end

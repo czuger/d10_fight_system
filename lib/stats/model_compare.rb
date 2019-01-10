@@ -30,7 +30,7 @@ class ModelCompare
     puts "\t" + keys.map{ |k| k[4..-1] }.join( "\t" )
 
     [:critical_failure, :failure, :success, :critical_success].each do |status|
-      puts "#{status.capitalize.to_s.gsub( '_', ' ' )}\t" + keys.map{ |k| (@results[k][status]/@results[k][:sum]).round(3).to_s.gsub( '.', ',' ) }.join( "\t" )
+      puts "#{status.capitalize.to_s.gsub( '_', ' ' )}\t" + keys.map{ |k| (@results[k][status]/@results[k][:sum]).round(5).to_s.gsub( '.', ',' ) }.join( "\t" )
     end
   end
 
@@ -42,7 +42,7 @@ class ModelCompare
 
     body = ''
     [:critical_failure, :failure, :success, :critical_success].each do |status|
-      body_line = "<td>#{status.capitalize.to_s.gsub( '_', ' ' )}</td>" + keys.map{ |k| "<td class='%s'>%s</td>" % [ key_to_class(k), ((@results[k][status]*100/@results[k][:sum]).round(1).to_s.gsub( '.', ',' ) + ' &#37;') ] }.join( '' )
+      body_line = "<td>#{status.capitalize.to_s.gsub( '_', ' ' )}</td>" + keys.map{ |k| "<td class='%s'>%s</td>" % [ key_to_class(k), ((@results[k][status]*100/@results[k][:sum]).round(2).to_s.gsub( '.', ',' ) + ' &#37;') ] }.join( '' )
       body += "<tr>#{body_line}</tr>"
     end
 
