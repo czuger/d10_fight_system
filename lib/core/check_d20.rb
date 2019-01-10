@@ -22,10 +22,13 @@ class CheckD20 < Check
   end
 
   def roll_dices(roll)
-    if @advantage
-      @kept_dices = roll.sort.reverse.first
-    else
-      @kept_dices = roll.first
+    case @roll_type
+      when :advantage
+        @kept_dices = roll.sort.reverse.first
+      when :disadvantage
+        @kept_dices = roll.sort.first
+      else
+        @kept_dices = roll.first
     end
   end
 end

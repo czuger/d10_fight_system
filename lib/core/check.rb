@@ -13,9 +13,9 @@ class Check
     @success = @critic = nil
   end
 
-  def roll(target: 0, advantage: false, rolls: nil)
+  def roll(target: 0, roll_type: :regular, rolls: nil)
     @bonus = @attribute - 10 + @skill + target - 10
-    @advantage = advantage
+    @roll_type = roll_type
 
     roll_dices(rolls)
 
