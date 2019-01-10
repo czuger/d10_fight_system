@@ -8,9 +8,9 @@ class ModelCompare
 
   DIFFICULTY_TEXT= { 4 => :easy, 6 => :easy, 8 => :easy, 10 => :medium, 12 => :hard, 14 => :hard, 16 => :hard }
 
-  def initialize( advantage= false )
-    @results= {}    
-    @advantage= advantage
+  def initialize( roll_type= :regular )
+    @results= {}
+    @roll_type= roll_type
   end
 
   def compute_results( steps_enumerator )
@@ -62,7 +62,7 @@ class ModelCompare
   end
 
   def permutations_d20
-    if @advantage
+    if @roll_type != :regular
       1.upto(20).to_a.repeated_permutation(2)
     else
       1.upto(20).to_a.repeated_permutation(1)
@@ -70,7 +70,7 @@ class ModelCompare
   end
 
   def permutations_d10
-    if @advantage
+    if @roll_type != :regular
       1.upto(10).to_a.repeated_permutation(3)
     else
       1.upto(10).to_a.repeated_permutation(2)
@@ -79,7 +79,7 @@ class ModelCompare
 
   def increase_hashes_value(target, dice, result)
     label = target_key(target, dice)
-    @results[label] ||= {}
+    @results[label] ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
     @results[label][result.status] ||= 0.0
     @results[label][result.status] += 1.0
 
@@ -89,12 +89,12 @@ class ModelCompare
   end
 
   def check_2d10(target, dice, roll)
-    result = Check2d10.new.roll( target: target, advantage: true, rolls: roll )
+    result = Check2d10.new.roll( target: target, roll_type: @roll_type, rolls: roll )
     increase_hashes_value target, dice, result
   end
 
   def check_d20(target, dice, roll)
-    result = CheckD20.new.roll( target: target, advantage: true, rolls: roll )
+    result = CheckD20.new.roll( target: target, roll_type: @roll_type, rolls: roll )
     increase_hashes_value target, dice, result
   end
   
