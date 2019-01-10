@@ -24,10 +24,13 @@ class CheckD20 < Check
   def roll_dices(roll)
     case @roll_type
       when :advantage
+        roll ||= Hazard.s2d20.rolls
         @kept_dices = roll.sort.reverse.first
       when :disadvantage
+        roll ||= Hazard.s2d20.rolls
         @kept_dices = roll.sort.first
       else
+        roll ||= Hazard.s1d20.rolls
         @kept_dices = roll.first
     end
   end
