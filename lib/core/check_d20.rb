@@ -8,15 +8,24 @@ class CheckD20 < Check
     @score = @kept_dices
     target = 10+@bonus
     @success = (score >= target)
+    @critic = false
 
-    @critic = [ 1, 20 ].include?( @kept_dices )
+    if @kept_dices == 1
+      @success = false
+      @critic = true
+    end
+
+    if @kept_dices == 20
+      @success = true
+      @critic = true
+    end
   end
 
   def roll_dices(roll)
     if @advantage
       @kept_dices = roll.sort.reverse.first
     else
-      @kept_dices = roll.is_a?(Array) ? roll.first : roll
+      @kept_dices = roll.first
     end
   end
 end
