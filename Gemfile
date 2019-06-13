@@ -17,5 +17,7 @@ group :test do
   gem 'minitest', '~> 5.0'
 end
 
-gem 'bundler', '~> 1.13'
+# gem 'bundler', '~> 1.13'
 gem 'rake', '~> 10.0'
+
+gem 'middleman'

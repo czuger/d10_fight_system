@@ -46,7 +46,7 @@ class ModelCompare
       body += "<tr>#{body_line}</tr>"
     end
 
-    table = "<table>#{header}#{body}</table>"
+    table = "<table class=\"table\">#{header}#{body}</table>"
     puts table
   end
   
