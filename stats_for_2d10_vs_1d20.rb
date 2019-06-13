@@ -7,8 +7,9 @@ require_relative 'lib/stats/model_compare'
     mc = ModelCompare.new( roll_type )
     mc.compute_results( enumerator )
     # mc.print_results
+    # mc.results_to_html
 
-    mc.results_to_html
+    mc.results_to_yaml roll_type
 
     puts
     puts

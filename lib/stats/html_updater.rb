@@ -19,7 +19,7 @@ module HtmlUpdater
       lines = lines.insert( anchor_position+1, lines_to_add ).flatten
     end
 
-    File.open( 'tmp.html', 'w' ) do |file|
+    File.open( filename, 'w' ) do |file|
       lines.each do |l|
         file.write l
       end

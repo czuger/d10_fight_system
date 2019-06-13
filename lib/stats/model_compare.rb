@@ -1,5 +1,6 @@
 require 'hazard'
 require 'pp'
+require 'yaml'
 
 require_relative '../core/check2d10'
 require_relative '../core/check_d20'
@@ -14,6 +15,7 @@ class ModelCompare
 
   def initialize( roll_type= :regular )
     @results= {}
+    @results_per_target= {}
     @roll_type= roll_type
   end
 
@@ -39,9 +41,10 @@ class ModelCompare
   end
 
   def results_to_html
+    pp @results_per_target
     keys = @results.keys.sort
 
-    header = keys.map{ |k| "<th>#{k[4..-1]}</th>" }.join( '' )
+    header = keys.map{ |k| "<th>#{k[4..-1]}</th>" }.insert( 0, '<th></th>' ).join( '' )
     header = "<tr>#{header}</tr>"
 
     body = ''
@@ -53,6 +56,13 @@ class ModelCompare
     table = "<table class=\"table\">#{header}#{body}</table>\n"
 
     add_lines_after 'website/fr/index.html', '<!--TABLE_1-->', table
+  end
+
+  def results_to_yaml( filename )
+    current_data = YAML.load_file( "data/#{filename}.yaml" )
+    File.open( "data/#{filename}.yaml", 'w' ) do |f|
+      f.write( ( @results_per_target.merge( current_data ) ).to_yaml )
+    end
   end
   
   private
@@ -91,6 +101,14 @@ class ModelCompare
     @results[label][:sum] ||= 0.0
     @results[label][:sum] += 1.0
 
+    @results_per_target[target] ||= {}
+    @results_per_target[target][dice] ||= {}
+
+    @results_per_target[target][dice][result.status] ||= 0.0
+    @results_per_target[target][dice][result.status] += 1.0
+
+    @results_per_target[target][dice][:sum] ||= 0.0
+    @results_per_target[target][dice][:sum] += 1.0
   end
 
   def check_2d10(target, dice, roll)
