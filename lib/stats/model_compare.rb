@@ -4,9 +4,13 @@ require 'pp'
 require_relative '../core/check2d10'
 require_relative '../core/check_d20'
 
+require_relative 'html_updater'
+
 class ModelCompare
 
   DIFFICULTY_TEXT= { 4 => :easy, 6 => :easy, 8 => :easy, 10 => :medium, 12 => :hard, 14 => :hard, 16 => :hard }
+
+  include HtmlUpdater
 
   def initialize( roll_type= :regular )
     @results= {}
@@ -46,8 +50,9 @@ class ModelCompare
       body += "<tr>#{body_line}</tr>"
     end
 
-    table = "<table class=\"table\">#{header}#{body}</table>"
-    puts table
+    table = "<table class=\"table\">#{header}#{body}</table>\n"
+
+    add_lines_after 'website/fr/index.html', '<!--TABLE_1-->', table
   end
   
   private
