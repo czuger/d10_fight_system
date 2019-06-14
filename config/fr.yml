@@ -1,0 +1,7 @@
+---
+fr:
+  results:
+    critical_failure: Echec critique
+    failure: Echec
+    success: Réussite
+    critical_success: Réussite critique

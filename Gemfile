@@ -20,4 +20,4 @@ end
 # gem 'bundler', '~> 1.13'
 gem 'rake', '~> 10.0'
 
-gem 'middleman'
+gem 'i18n'

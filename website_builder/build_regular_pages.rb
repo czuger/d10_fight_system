@@ -1,4 +1,6 @@
 require 'yaml'
+require 'i18n'
+
 require_relative '../lib/stats/html_updater'
 
 include HtmlUpdater
@@ -12,6 +14,11 @@ def dice_number_to_text( number )
   '2d10'
 end
 
+I18n.load_path = Dir['config/*.yml']
+I18n.backend.load_translations
+I18n.available_locales = [:fr]
+I18n.locale = :fr
+
 data = YAML.load_file( 'data/regular.yaml' )
 keys = data.keys.sort
 
@@ -20,8 +27,8 @@ lower_header = keys.map{ |k| data[k].keys.sort.reverse.map{ |sk| "<th class='tex
 header = "<tr>#{upper_header}</tr><tr>#{lower_header}</tr>"
 
 body = ''
-[:critical_failure, :failure, :success, :critical_success].each_with_index do |status, index|
-  body_line = "<td>#{status.capitalize.to_s.gsub( '_', ' ' )}</td>" + keys.map{ |k| data[k].keys.sort.reverse.map{ |sk| stat_cell( data, k, sk, status, index ) } }.flatten.join( '' )
+[ :critical_success, :success, :failure, :critical_failure ].each_with_index do |status, index|
+  body_line = "<td>#{I18n.t('results.'+status.to_s)}</td>" + keys.map{ |k| data[k].keys.sort.reverse.map{ |sk| stat_cell( data, k, sk, status, index ) } }.flatten.join( '' )
   body += "<tr>#{body_line}</tr>"
 end
 
