@@ -5,3 +5,7 @@ fr:
     failure: Echec
     success: Réussite
     critical_success: Réussite critique
+
+  texts:
+    header_1: Replacer un d20 par 2d10
+    intro_1:
