@@ -7,7 +7,7 @@ module HtmlUpdater
 
       anchor_position = nil
       lines.each_with_index do |l, i|
-        p l.strip
+        # p l.strip
         if anchor == l.strip
           anchor_position = i
           break
