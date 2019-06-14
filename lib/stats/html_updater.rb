@@ -14,7 +14,7 @@ module HtmlUpdater
         end
       end
 
-      raise 'Unable to find anchor' unless anchor_position
+      raise "Unable to find anchor <#{anchor}>" unless anchor_position
 
       lines = lines.insert( anchor_position+1, lines_to_add ).flatten
     end

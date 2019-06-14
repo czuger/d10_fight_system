@@ -7,5 +7,6 @@ fr:
     critical_success: Réussite critique
 
   texts:
-    header_1: Replacer un d20 par 2d10
-    intro_1:
+    header1: Replacer un d20 par 2d10
+    intro1: Le d20 est devenu aujourd'hui un incontournable.
+    intro2: Quelle est l'utilité de faire ça ?

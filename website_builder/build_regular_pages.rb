@@ -31,11 +31,13 @@ def build_table( locale )
 
   table = "<table class='table table-striped'><thead>#{header}</thead><tbody>#{body}</tbody></table>\n"
 
-  add_lines_after "website/#{locale}/index.html", '<!--TABLE_1-->', table
+  add_lines_after "website/#{locale}/index.html", '<!--TABLE1-->', table
 end
 
 def fill_text( locale )
-  add_lines_after "website/#{locale}/index.html", '<!--HEADER_1-->', I18n.t('texts.header_1')
+  %w( header1 intro1 intro2 ).each do |t|
+    add_lines_after "website/#{locale}/index.html", "<!--#{t.upcase}-->", I18n.t("texts.#{t}")
+  end
 end
 
 I18n.load_path = Dir['config/*.yml']
