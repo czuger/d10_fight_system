@@ -67,9 +67,9 @@ I18n.available_locales.each do |locale|
 
   FileUtils.copy( 'website_builder/index_template.html', "website/#{locale}/index.html" )
   fill_text locale
-  build_table data, [ 1, 2, 3, 4, 5, 6, 7 ], 'TABLE1', locale
-  build_table data, [ 7, 8, 9, 10, 11, 12, 13 ], 'TABLE2', locale
-  build_table data, [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
+  build_table data, [ 4, 6, 8, 10, 12, 14, 16 ], 'TABLE1', locale
+  # build_table data, [ 7, 8, 9, 10, 11, 12, 13 ], 'TABLE2', locale
+  # build_table data, [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
 
   add_json_data data, locale
 end
