@@ -48,24 +48,24 @@ class Check
   end
 
 
-  def to_s
-    # final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}, "
-    # final_string += "roll malus = #{@malus}, #{@roll.result}+#{@target}-> >= 10+#{@malus} : "
-    result_string = [ (:critical if @critic), @success ? :success : :failure ].compact.join( ' ' )
-
-    final_string = result_string.colorize( color: RESULT_COLORS[result_string] ) + ': '
-
-    final_string += "#{@roll.result}+" + "#{@target}".colorize(:blue) + '-' + "#{@malus}".colorize(:red)
-
-    final_string += '=' + "#{@roll.result+@target-@malus}".colorize( color: RESULT_COLORS[result_string] )
-
-    final_string += " (roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, "
-
-    final_string += "target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}".colorize(:blue)
-
-    final_string += ', ' + "malus: #{@malus})".colorize(:red)
-
-    final_string
-  end
+  # def to_s
+  #   # final_string = "roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, roll target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}, "
+  #   # final_string += "roll malus = #{@malus}, #{@roll.result}+#{@target}-> >= 10+#{@malus} : "
+  #   result_string = [ (:critical if @critic), @success ? :success : :failure ].compact.join( ' ' )
+  #
+  #   final_string = result_string.colorize( color: RESULT_COLORS[result_string] ) + ': '
+  #
+  #   final_string += "#{@roll.result}+" + "#{@target}".colorize(:blue) + '-' + "#{@malus}".colorize(:red)
+  #
+  #   final_string += '=' + "#{@roll.result+@target-@malus}".colorize( color: RESULT_COLORS[result_string] )
+  #
+  #   final_string += " (roll: #{@roll.rolls[0]}+#{@roll.rolls[1]}=#{@roll.result}, "
+  #
+  #   final_string += "target: #{@attribute-10}+#{@skill}+#{@misc_target}=#{@target}".colorize(:blue)
+  #
+  #   final_string += ', ' + "malus: #{@malus})".colorize(:red)
+  #
+  #   final_string
+  # end
 
 end

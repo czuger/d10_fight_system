@@ -7,6 +7,7 @@ fr:
     critical_success: Réussite critique
 
   texts:
-    header1: Replacer un d20 par 2d10
-    intro1: Le d20 est devenu aujourd'hui un incontournable.
-    intro2: Quelle est l'utilité de faire ça ?
+    header1: Remplacer un d20 par 2d10
+    intro1: Cette methode permet de remplacer un d20 par 2d10. Cette methode est utile pour ceux qui trouvent le d20 trop aléatoire et qui souhaitent avoir un jet plus "moyenné"
+    desc1: "La méthode est simple : lancez 2d10 et sommez le résultat des deux dés. Si la somme est <b>supérieure ou égale</b> à la difficultée, alors le résultat est une réussite. Sinon, c'est un echec."
+    desc2: De plus, si le résultat est un double, considérez le résultat comme un critique (échec critique s'il s'agissait d'un échec, réussite critique s'il s'agissait d'une réussite).

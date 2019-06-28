@@ -7,7 +7,7 @@ class CheckD20 < Check
   def set_results
     @score = @kept_dices
     target = 10+@bonus
-    @success = (score >= target)
+    @success = (@score >= target)
     @critic = false
 
     if @kept_dices == 1

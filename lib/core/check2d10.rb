@@ -7,7 +7,10 @@ class Check2d10 < Check
   def set_results
     @score = @kept_dices.inject(:+)
     target = 10+@bonus
-    @success = (score > target)
+    @success = (@score >= target)
+
+    # puts "@score = #{@score}, score = #{score}, target = #{target}, @success = #{@success}"
+
     @critic = false
 
     if @kept_dices[0] == @kept_dices[1]

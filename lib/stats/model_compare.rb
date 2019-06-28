@@ -60,8 +60,11 @@ class ModelCompare
 
   def results_to_yaml( filename )
     current_data = YAML.load_file( "data/#{filename}.yaml" )
+
+    # p @results_per_target[8][10]
+
     File.open( "data/#{filename}.yaml", 'w' ) do |f|
-      f.write( ( @results_per_target.merge( current_data ) ).to_yaml )
+      f.write current_data.merge( @results_per_target ).to_yaml
     end
   end
   
