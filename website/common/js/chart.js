@@ -1,4 +1,12 @@
 window.onload = function () {
+
+    var d20=document.getElementById("d20_data").value;
+    d20 = JSON.parse( d20 );
+    var d10=document.getElementById("2d10_data").value;
+    d10 = JSON.parse( d10 );
+
+    console.log( d20 );
+
     Highcharts.chart('chart_container', {
 
         title: {
@@ -7,13 +15,21 @@ window.onload = function () {
 
         yAxis: {
             title: {
-                text: 'Occurences'
+                text: '% succès'
             }
         },
         legend: {
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle'
+        },
+
+        tooltip: {
+            formatter: function () {
+                return 'Pour une difficulté de <b>' + this.x +
+                    '</b> les chances de réussite sont de <b>' + this.y + '%</b>' +
+                    ' pour ' + this.series.name;
+            }
         },
 
         plotOptions: {
@@ -26,11 +42,11 @@ window.onload = function () {
         },
 
         series: [{
-            name: 'd20',
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+            name: 'un dé 20',
+            data: d20
         }, {
-            name: '2d10',
-            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+            name: 'deux dés 10',
+            data: d10
         }],
 
         responsive: {

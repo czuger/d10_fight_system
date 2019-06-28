@@ -1,6 +1,7 @@
 require 'yaml'
 require 'i18n'
 require 'fileutils'
+require 'json'
 
 require_relative '../lib/stats/html_updater'
 
@@ -23,9 +24,7 @@ def dice_number_to_text( number )
   '2d10'
 end
 
-def build_table( keys, table_anchor, locale )
-  data = YAML.load_file( 'data/regular.yaml' )
-
+def build_table( data, keys, table_anchor, locale )
   upper_header = keys.each_with_index.map{ |k, i| "<th class='text-center target_#{i}_0' colspan=2>#{k}</th>" }.insert( 0, "<th rowspan=2 ></th>" ).join( '' )
   lower_header = keys.each_with_index.map{ |k, i| data[k].keys.sort.reverse.map{ |sk| "<th class='text-center target_#{i}_1'>#{dice_number_to_text(sk)}</th>" } }.flatten.join( '' )
   header = "<tr>#{upper_header}</tr><tr>#{lower_header}</tr>"
@@ -47,6 +46,14 @@ def fill_text( locale )
   end
 end
 
+def add_json_data( data, locale )
+  d20_data = data.map{ |target, s_data_1| [ target, s_data_1[20][:success] * 100 / s_data_1[20][:sum] ] }.sort.map{ |e| e.last }
+  add_lines_after "website/#{locale}/index.html", "<!--JSOND20-->", "<input id='d20_data' type='hidden' value='#{d20_data.to_json}'>"
+
+  _2d20_data = data.map{ |target, s_data_1| [ target, s_data_1[10][:success] * 100 / s_data_1[10][:sum] ] }.sort.map{ |e| e.last }
+  add_lines_after "website/#{locale}/index.html", "<!--JSON2D10-->", "<input id='2d10_data' type='hidden' value='#{_2d20_data.to_json}'>"
+end
+
 I18n.load_path = Dir['config/*.yml']
 I18n.backend.load_translations
 I18n.available_locales = [:fr, :en]
@@ -56,9 +63,13 @@ I18n.available_locales = [:fr, :en]
 I18n.available_locales.each do |locale|
   I18n.locale = locale
 
+  data = YAML.load_file( 'data/regular.yaml' )
+
   FileUtils.copy( 'website_builder/index_template.html', "website/#{locale}/index.html" )
   fill_text locale
-  build_table [ 1, 2, 3, 4, 5, 6, 7 ], 'TABLE1', locale
-  build_table [ 7, 8, 9, 10, 11, 12, 13 ], 'TABLE2', locale
-  build_table [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
+  build_table data, [ 1, 2, 3, 4, 5, 6, 7 ], 'TABLE1', locale
+  build_table data, [ 7, 8, 9, 10, 11, 12, 13 ], 'TABLE2', locale
+  build_table data, [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
+
+  add_json_data data, locale
 end
