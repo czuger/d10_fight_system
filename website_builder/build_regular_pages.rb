@@ -6,14 +6,16 @@ require_relative '../lib/stats/html_updater'
 
 include HtmlUpdater
 
-def stat_cell( data, target, dice, status, index )
+def stat_cell( data, target, dice, status, row_oddity, keys_index )
   # p "dice = #{dice}, target = #{target}"
   # p data[target][dice]
+
+  # p keys_index
 
   result = data[target][dice][status]
   result ||= 0
 
-  "<td class='%s text-center'>%s</td>" % [ "target_#{target}_#{index % 2}", ((result*100/data[target][dice][:sum]).round(0).to_s.gsub( '.', ',' ) + ' &#37;') ]
+  "<td class='%s text-center'>%s</td>" % [ "target_#{keys_index}_#{row_oddity % 2}", ((result*100/data[target][dice][:sum]).round(0).to_s.gsub( '.', ',' ) + ' &#37;') ]
 end
 
 def dice_number_to_text( number )
@@ -24,13 +26,13 @@ end
 def build_table( keys, table_anchor, locale )
   data = YAML.load_file( 'data/regular.yaml' )
 
-  upper_header = keys.map{ |k| "<th class='text-center target_#{k}_0' colspan=2>#{k}</th>" }.insert( 0, "<th rowspan=2 ></th>" ).join( '' )
-  lower_header = keys.map{ |k| data[k].keys.sort.reverse.map{ |sk| "<th class='text-center target_#{k}_1'>#{dice_number_to_text(sk)}</th>" } }.flatten.join( '' )
+  upper_header = keys.each_with_index.map{ |k, i| "<th class='text-center target_#{i}_0' colspan=2>#{k}</th>" }.insert( 0, "<th rowspan=2 ></th>" ).join( '' )
+  lower_header = keys.each_with_index.map{ |k, i| data[k].keys.sort.reverse.map{ |sk| "<th class='text-center target_#{i}_1'>#{dice_number_to_text(sk)}</th>" } }.flatten.join( '' )
   header = "<tr>#{upper_header}</tr><tr>#{lower_header}</tr>"
 
   body = ''
   [ :critical_success, :success, :failure, :critical_failure ].each_with_index do |status, index|
-    body_line = "<td>#{I18n.t('results.'+status.to_s)}</td>" + keys.map{ |k| data[k].keys.sort.reverse.map{ |sk| stat_cell( data, k, sk, status, index ) } }.flatten.join( '' )
+    body_line = "<td>#{I18n.t('results.'+status.to_s)}</td>" + keys.each_with_index.map{ |k, keys_index| data[k].keys.sort.reverse.map{ |sk| stat_cell( data, k, sk, status, index, keys_index ) } }.flatten.join( '' )
     body += "<tr>#{body_line}</tr>"
   end
 
