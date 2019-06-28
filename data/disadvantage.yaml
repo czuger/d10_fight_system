@@ -3,252 +3,259 @@
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 72.0
-    :success: 288.0
+    :failure: 111.0
+    :success: 289.0
     :critical_success: 1.0
   10:
-    :critical_failure: 28.0
+    :critical_failure: 53.0
     :sum: 1000.0
-    :failure: 51.0
-    :success: 912.0
-    :critical_success: 9.0
+    :failure: 149.0
+    :success: 851.0
+    :critical_success: 8.0
 10:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 240.0
-    :success: 120.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 94.0
-    :sum: 1000.0
-    :failure: 528.0
-    :success: 372.0
-    :critical_success: 6.0
-16:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 336.0
-    :success: 24.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 133.0
-    :sum: 1000.0
-    :failure: 825.0
-    :success: 39.0
-    :critical_success: 3.0
-6:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 136.0
-    :success: 224.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 53.0
-    :sum: 1000.0
-    :failure: 180.0
-    :success: 759.0
-    :critical_success: 8.0
-14:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 312.0
-    :success: 48.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 123.0
-    :sum: 1000.0
-    :failure: 771.0
-    :success: 102.0
-    :critical_success: 4.0
-8:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 192.0
-    :success: 168.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 75.0
-    :sum: 1000.0
-    :failure: 351.0
-    :success: 567.0
-    :critical_success: 7.0
-12:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 280.0
-    :success: 80.0
+    :failure: 279.0
+    :success: 121.0
     :critical_success: 1.0
   10:
     :critical_failure: 110.0
     :sum: 1000.0
-    :failure: 675.0
-    :success: 210.0
+    :failure: 710.0
+    :success: 290.0
     :critical_success: 5.0
+16:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 375.0
+    :success: 25.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 140.0
+    :sum: 1000.0
+    :failure: 977.0
+    :success: 23.0
+    :critical_success: 2.0
+6:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 175.0
+    :success: 225.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 75.0
+    :sum: 1000.0
+    :failure: 327.0
+    :success: 673.0
+    :critical_success: 7.0
+14:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 351.0
+    :success: 49.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 133.0
+    :sum: 1000.0
+    :failure: 931.0
+    :success: 69.0
+    :critical_success: 3.0
+8:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 231.0
+    :success: 169.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 94.0
+    :sum: 1000.0
+    :failure: 526.0
+    :success: 474.0
+    :critical_success: 6.0
+12:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 319.0
+    :success: 81.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 123.0
+    :sum: 1000.0
+    :failure: 846.0
+    :success: 154.0
+    :critical_success: 4.0
 5:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 105.0
-    :success: 255.0
+    :failure: 144.0
+    :success: 256.0
     :critical_success: 1.0
   10:
     :critical_failure: 53.0
     :sum: 1000.0
-    :failure: 96.0
-    :success: 843.0
+    :failure: 233.0
+    :success: 767.0
     :critical_success: 8.0
 7:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 165.0
-    :success: 195.0
+    :failure: 204.0
+    :success: 196.0
     :critical_success: 1.0
   10:
     :critical_failure: 75.0
     :sum: 1000.0
-    :failure: 252.0
-    :success: 666.0
+    :failure: 426.0
+    :success: 574.0
     :critical_success: 7.0
 9:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 217.0
-    :success: 143.0
+    :failure: 256.0
+    :success: 144.0
     :critical_success: 1.0
   10:
     :critical_failure: 94.0
     :sum: 1000.0
-    :failure: 432.0
-    :success: 468.0
+    :failure: 622.0
+    :success: 378.0
     :critical_success: 6.0
 11:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 261.0
-    :success: 99.0
+    :failure: 300.0
+    :success: 100.0
     :critical_success: 1.0
   10:
     :critical_failure: 110.0
     :sum: 1000.0
-    :failure: 600.0
-    :success: 285.0
+    :failure: 785.0
+    :success: 215.0
     :critical_success: 5.0
 13:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 297.0
-    :success: 63.0
+    :failure: 336.0
+    :success: 64.0
     :critical_success: 1.0
   10:
     :critical_failure: 123.0
     :sum: 1000.0
-    :failure: 723.0
-    :success: 150.0
+    :failure: 894.0
+    :success: 106.0
     :critical_success: 4.0
 15:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 325.0
-    :success: 35.0
+    :failure: 364.0
+    :success: 36.0
     :critical_success: 1.0
   10:
     :critical_failure: 133.0
     :sum: 1000.0
-    :failure: 798.0
-    :success: 66.0
+    :failure: 958.0
+    :success: 42.0
     :critical_success: 3.0
 2:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :success: 360.0
+    :failure: 39.0
+    :success: 361.0
     :critical_success: 1.0
   10:
     :critical_failure: 28.0
     :sum: 1000.0
-    :success: 963.0
+    :failure: 28.0
+    :success: 972.0
     :critical_success: 9.0
 3:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 37.0
-    :success: 323.0
+    :failure: 76.0
+    :success: 324.0
     :critical_success: 1.0
   10:
     :critical_failure: 28.0
     :sum: 1000.0
-    :success: 963.0
+    :failure: 79.0
+    :success: 921.0
     :critical_success: 9.0
 17:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 345.0
-    :success: 15.0
+    :failure: 384.0
+    :success: 16.0
     :critical_success: 1.0
   10:
     :critical_failure: 140.0
     :sum: 1000.0
-    :failure: 837.0
-    :success: 21.0
+    :failure: 989.0
+    :success: 11.0
     :critical_success: 2.0
 18:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 352.0
-    :success: 8.0
-    :critical_success: 1.0
-  10:
-    :critical_failure: 140.0
-    :sum: 1000.0
-    :failure: 849.0
+    :failure: 391.0
     :success: 9.0
-    :critical_success: 2.0
-19:
-  20:
-    :critical_failure: 39.0
-    :sum: 400.0
-    :failure: 357.0
-    :success: 3.0
     :critical_success: 1.0
   10:
     :critical_failure: 144.0
     :sum: 1000.0
-    :failure: 852.0
-    :success: 3.0
+    :failure: 996.0
+    :success: 4.0
+    :critical_success: 1.0
+19:
+  20:
+    :critical_failure: 39.0
+    :sum: 400.0
+    :failure: 396.0
+    :success: 4.0
+    :critical_success: 1.0
+  10:
+    :critical_failure: 144.0
+    :sum: 1000.0
+    :failure: 999.0
+    :success: 1.0
     :critical_success: 1.0
 20:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :failure: 360.0
+    :failure: 399.0
+    :success: 1.0
     :critical_success: 1.0
   10:
     :critical_failure: 144.0
     :sum: 1000.0
-    :failure: 855.0
+    :failure: 999.0
+    :success: 1.0
     :critical_success: 1.0
 1:
   20:
     :critical_failure: 39.0
     :sum: 400.0
-    :success: 360.0
+    :failure: 39.0
+    :success: 361.0
     :critical_success: 1.0
   10:
     :critical_failure: 28.0
     :sum: 1000.0
-    :success: 963.0
+    :failure: 28.0
+    :success: 972.0
     :critical_success: 9.0

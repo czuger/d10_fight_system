@@ -105,13 +105,15 @@ class ModelCompare
     @results[label][:sum] += 1.0
 
     @results_per_target[target] ||= {}
-    @results_per_target[target][dice] ||= {}
+    @results_per_target[target][dice] ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
 
-    @results_per_target[target][dice][result.status] ||= 0.0
     @results_per_target[target][dice][result.status] += 1.0
 
-    @results_per_target[target][dice][:sum] ||= 0.0
+    @results_per_target[target][dice][:success] += 1.0 if result.status == :critical_success
+    @results_per_target[target][dice][:failure] += 1.0 if result.status == :critical_failure
+
     @results_per_target[target][dice][:sum] += 1.0
+
   end
 
   def check_2d10(target, dice, roll)
