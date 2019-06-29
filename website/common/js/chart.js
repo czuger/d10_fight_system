@@ -16,7 +16,8 @@ window.onload = function () {
         yAxis: {
             title: {
                 text: '% succès'
-            }
+            },
+            max: 100
         },
         legend: {
             layout: 'vertical',

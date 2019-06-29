@@ -54,6 +54,10 @@ def add_json_data( data, locale )
   add_lines_after "website/#{locale}/index.html", "<!--JSON2D10-->", "<input id='2d10_data' type='hidden' value='#{_2d20_data.to_json}'>"
 end
 
+def add_json_charts_translations locale
+  # add_lines_after "website/#{locale}/index.html", "<!--JSON_CHART_TRANSLATIONS-->", "<input id='2d10_data' type='hidden' value='#{_2d20_data.to_json}'>"
+end
+
 I18n.load_path = Dir['config/*.yml']
 I18n.backend.load_translations
 I18n.available_locales = [:fr, :en]
@@ -72,4 +76,6 @@ I18n.available_locales.each do |locale|
   # build_table data, [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
 
   add_json_data data, locale
+
+  add_json_charts_translations locale
 end
