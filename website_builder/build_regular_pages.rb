@@ -48,10 +48,14 @@ end
 
 def add_json_data( data, locale )
   d20_data = data.map{ |target, s_data_1| [ target, s_data_1[20][:success] * 100 / s_data_1[20][:sum] ] }.sort.map{ |e| e.last }
-  add_lines_after "website/#{locale}/index.html", "<!--JSOND20-->", "<input id='d20_data' type='hidden' value='#{d20_data.to_json}'>"
+  d20_critical = data.map{ |target, s_data_1| [ target, s_data_1[20][:critical_success] * 100 / s_data_1[20][:sum] ] }.sort.map{ |e| e.last }
 
   _2d20_data = data.map{ |target, s_data_1| [ target, s_data_1[10][:success] * 100 / s_data_1[10][:sum] ] }.sort.map{ |e| e.last }
-  add_lines_after "website/#{locale}/index.html", "<!--JSON2D10-->", "<input id='2d10_data' type='hidden' value='#{_2d20_data.to_json}'>"
+  _2d20_critical = data.map{ |target, s_data_1| [ target, s_data_1[10][:critical_success] * 100 / s_data_1[10][:sum] ] }.sort.map{ |e| e.last }
+
+  json_data = { 'd20' => d20_data, 'd20_critical' => d20_critical, 'd10' => _2d20_data, 'd10_critical' => _2d20_critical }
+
+  add_lines_after "website/#{locale}/index.html", "<!--JSON_CHARTS_DATA-->", "<input id='json_data' type='hidden' value='#{json_data.to_json}'>"
 end
 
 def add_json_charts_translations locale
