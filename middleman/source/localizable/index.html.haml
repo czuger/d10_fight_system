@@ -33,7 +33,9 @@
     = t('texts.chart1_intro')
   %p
     = t('texts.chart2_intro')
+
   #chart_regular_success
+
   #chart_critical_success
   %h4
     = t('texts.why1_title')
@@ -43,12 +45,11 @@
     = t('texts.why2')
   %p
     = t('texts.why3')
-  %p
-    = t('texts.why4')
-  %p
-    = t('texts.why5')
+  -#%p
+  -#  = t('texts.why4')
+  -#%p
+  -#  = t('texts.why5')
 
   = input_tag :hidden, value: data.charts.to_json, :id => 'json_data'
 
-
-  = t('texts.json_chart_translations')
+  -#= t('texts.json_chart_translations')
