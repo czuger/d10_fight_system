@@ -47,5 +47,8 @@
     = t('texts.why4')
   %p
     = t('texts.why5')
-  = t('texts.json_charts_data')
+
+  = input_tag :hidden, value: data.charts.to_json, :id => 'json_data'
+
+
   = t('texts.json_chart_translations')

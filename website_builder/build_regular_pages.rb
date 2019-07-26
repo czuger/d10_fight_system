@@ -55,7 +55,11 @@ def add_json_data( data, locale )
 
   json_data = { 'd20' => d20_data, 'd20_critical' => d20_critical, 'd10' => _2d20_data, 'd10_critical' => _2d20_critical }
 
-  add_lines_after "website/#{locale}/index.html", "<!--JSON_CHARTS_DATA-->", "<input id='json_data' type='hidden' value='#{json_data.to_json}'>"
+  # add_lines_after "website/#{locale}/index.html", "<!--JSON_CHARTS_DATA-->", "<input id='json_data' type='hidden' value='#{json_data.to_json}'>"
+
+  File.open( 'middleman/source/data/charts.yml', 'w' ) do |f|
+    f.puts json_data.to_yaml
+  end
 end
 
 def add_json_charts_translations locale
@@ -74,12 +78,12 @@ I18n.available_locales.each do |locale|
   data = YAML.load_file( 'data/regular.yaml' )
 
   FileUtils.copy( 'website_builder/index_template.html', "website/#{locale}/index.html" )
-  fill_text locale
-  build_table data, [ 4, 6, 8, 10, 12, 14, 16 ], 'TABLE1', locale
+  # fill_text locale
+  # build_table data, [ 4, 6, 8, 10, 12, 14, 16 ], 'TABLE1', locale
   # build_table data, [ 7, 8, 9, 10, 11, 12, 13 ], 'TABLE2', locale
   # build_table data, [ 14, 15, 16, 17, 18, 19, 20 ], 'TABLE3', locale
 
   add_json_data data, locale
 
-  add_json_charts_translations locale
+  # add_json_charts_translations locale
 end
