@@ -21,3 +21,5 @@ end
 gem 'rake', '~> 10.0'
 
 gem 'i18n'
+
+gem 'middleman'
