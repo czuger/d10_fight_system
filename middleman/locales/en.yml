@@ -1,0 +1,12 @@
+en:
+  results:
+    critical_failure: Critical failure
+    failure: Failure
+    success: Success
+    critical_success: Critical success
+
+  texts:
+    header1: Use two 10 sided dice instead of one 20 sided die
+    intro1: This article show you how to replace one d20 by 2d10. This method is useful for those who think that a d20 is too random and want to have a more "middled" roll.
+    desc1: "The method is simple : roll two 10 sided dice and sum the result. If the sum is <b>strictly above</b> the difficulty, then it is a success. Otherwise it is a failure"
+    desc2: Moreover, if the result is a double, the result is a critic (critical failure if it was a critic, critical success if it was a success).

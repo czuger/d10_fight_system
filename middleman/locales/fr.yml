@@ -1,0 +1,60 @@
+fr:
+  results:
+    critical_failure: Echec critique
+    failure: Echec
+    success: Réussite
+    critical_success: Réussite critique
+
+  texts:
+    header1: Comment remplacer 1d20 par 2d10
+
+    intro1: >
+      Cette methode permet de remplacer un d20 par 2d10. Elle remplace les incréments de 5% du d20 par une courbe moins
+      prévisible. Elle accentue les chances de succès en cas de bonus et aggrave les chances d'echecs en cas de malus.
+    intro2: >
+      Elle permet également d'aligner les chances de critiques sur les chances de succès. En effet, avec un d20 vous
+      avez 5% de chances de faire un critique que vous ayez un bonus de 5 ou un malus de 5. Avec cette méthode, ça n'est pas le cas.
+      Vous avez plus de chances de faire une réussite critique si vous avez un bonus au jet. Inversement, avec un malus, vos chances
+      d'échec critique augmentent.
+
+    method1_title: Description
+    method2: "Lancez 2d10 et sommez le résultat des deux dés. Si la somme est <b>strictement supérieure</b> à la difficultée, alors le résultat est une réussite. Sinon, c'est un echec."
+    method3: De plus, si le résultat est un double, considérez le résultat comme un critique (échec critique s'il s'agissait d'un échec, réussite critique s'il s'agissait d'une réussite).
+    method4: Pour ceux qui jouent à Donjons et Dragons et qui souhaitent utiliser les avantages et les désavantages avec cette methode, une page dédiée sera bientôt en ligne.
+
+    # Cette partie doit se trouver en conclusion
+    why1_title: Conclusion
+    why1: "Beaucoup de personnes se demanderons probablement : pourquoi remplacer une methode qui fonctionne. Il n'y a pas vraiement de réponse stricte à cette question. Utiliser l'une ou l'autre méthode est une question de goût."
+    why2: >
+      Pour vous aider à faire votre choix, je vais vous proposer de changer un peu de monde et d'oublier les jeux
+      et les statistiques pour passer au monde tout aussi intéressante de la bière. Lorsque vous sortez avec vos amis,
+      et que vous voulez boire ne bière vous êtes confronté à un choix. Vous pouvez choisir la bière blonde traditionnelle
+      qui est brassée de la même manière depuis plusieurs générations. Ou bien vous pouvez éssayer la dernière IPA produite par la brasserie locale.
+      La blonde traditionnelle vous garantie une certaine qualitée, vous savez ce que vous allez boire. L'IPA au contraire peut vous surprendre enn bien ou en mal.
+      Certains la trouverons originale, d'autre, trop amère.
+    why3: >
+      Comment déterminer laquelle est la meilleure ? Et bien c'est impossible, car cela dépend uniquement de votre goût.
+      Et c'est la même chose pour cette méthode. Le d20 est une methode testée par des générations de joueurs.
+      C'est un jet simple et relativement prévisible (+2 au jet = 10% de chances en plus). Les 2d10 donnent un jet plus complexe à apréhender
+
+    analytics1_title: Analyse
+    table1_intro: Voici un tableau comparé des chances de succès, d'échecs (standard et critiques) des deux types de jets.
+    table1_explanation1: >
+      La colonne 10 représente le jet moyen avec une absense de difficulté. Sur cette colonne, rien à dire, les statistiques sont exactement les mêmes pour une d20 et 2d10 (ouf !)
+    table1_explanation2: >
+      La colonne 8 représente le jet avec une bonus de 2. Dans ce cas, on constate que les chances d'obtenir un succès ne sont plus les mêmes.
+      Le d20 donne bien les 10% de chances supplémentaires attendus. Les 2d10 donnent 72% de chances de réussites, soit 17% de plus.
+      Si l'on regarde la colonne 6 (un bonus de 4) les chances sont de 85% de chances en plus soit 30% contre 20% pour un d20.
+    table1_explanation3: >
+      Si l'on prend maintenant la colonne 12 qui représente un malus de 2, on constate que l'on a 19% de chance en moins de réussite
+      contre toujours 10% de chances en moins pour le d20. On ne vous ment pas quand on vous dit que ce système est moins prévisible.
+    table1_explanation4: >
+      Enfin, si l'on regarde les lignes des critiques. Un bonus de 2 donne 6% de chance de réussite critique contre 4% de chances d'echec critique.
+      Un malus de 2 inversera ces probabilités.
+
+
+    charts1_title: Des courbes
+    chart1_intro: Que serait une analyse statistiques sans de belles courbes ?
+    chart2_intro: Le graphique suivant représente les courbes comparés de succès. La ligne droite bleue représente le d20 et la courbe noir en S représente les 2d10. On constate que la linéarité du d20 est cassée.
+
+#    table1_title: Comparaison sous forme de table entre 1d20 par 2d10
