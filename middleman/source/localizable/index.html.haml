@@ -17,7 +17,31 @@
     = t('texts.analytics1_title')
   %p
     = t('texts.table1_intro')
-  = t('texts.table1')
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th{:rowspan => 2}
+        - 4.step(16, 2).each_with_index do |step, index|
+          %th.text-center{ class: "target_#{index}_0", :colspan => 2}
+            = step
+      %tr
+        - 0.upto(6).each do |index|
+          %th.text-center{ class: "target_#{index}_1" }
+            d20
+          %th.text-center{ class: "target_#{index}_1" }
+            2d10
+
+    %tbody
+      - [ :critical_success, :success, :failure, :critical_failure ].each_with_index do |status, index|
+        %tr
+          %td= status
+          - 4.step(16, 2).each_with_index do |step, index|
+            %td.text-center{ class: "target_#{index}_1" }
+              = "#{data.regular.send( step.to_s ).send( '20' ).send( status ).round} %"
+            %td.text-center{ class: "target_#{index}_1" }
+              = "#{data.regular.send( step.to_s ).send( '10' ).send( status ).round} %"
+
   %ul
     %li
       = t('texts.table1_explanation1')
