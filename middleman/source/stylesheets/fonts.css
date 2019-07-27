@@ -5,3 +5,21 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'rubiklight';
+    src: url('../fonts/rubik-light.woff2') format('woff2'),
+    url('../fonts/rubik-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'rubiklight_italic';
+    src: url('../fonts/rubik-lightitalic.woff2') format('woff2'),
+    url('../fonts/rubik-lightitalic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
