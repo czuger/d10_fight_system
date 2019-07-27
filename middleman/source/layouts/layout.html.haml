@@ -13,9 +13,9 @@
     = stylesheet_link_tag 'globals'
     = stylesheet_link_tag 'table_colors'
 
-    = javascript_include_tag 'bootstrap.bundle.min'
-    = javascript_include_tag 'charts'
-    = javascript_include_tag 'highcharts.js'
+    = javascript_include_tag 'bootstrap.bundle.min', defer: true
+    = javascript_include_tag 'charts', defer: true
+    = javascript_include_tag 'highcharts.js', defer: true
 
   %body
     = yield
