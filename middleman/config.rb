@@ -42,7 +42,12 @@ activate :i18n
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
-# configure :build do
-#   activate :minify_css
-#   activate :minify_javascript
-# end
+configure :build do
+  activate :minify_css
+  activate :minify_javascript
+  activate :minify_html
+
+  activate :gzip
+
+  activate :asset_hash
+end
