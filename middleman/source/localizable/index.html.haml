@@ -1,6 +1,13 @@
 .container
-  %h2#main-title.text-center.mb-3
-    = t('texts.header1')
+  .row
+    .col-11
+      %h2#main-title.text-center.mb-3
+        = t('texts.header1')
+    .col.mt-3
+      = link_to( 'EN', '/' )
+      |
+      = link_to( 'FR', 'fr' )
+
   %p
     = t('texts.intro1')
   %p
