@@ -4,9 +4,11 @@
       %h2#main-title.text-center.mb-3
         = t('texts.header1')
     .col.mt-3
-      = link_to( 'EN', '/' )
+      %a{:href => '/'}
+        EN
       |
-      = link_to( 'FR', '/fr/index.html' )
+      %a{:href => '/fr'}
+        FR
 
   %p
     = t('texts.intro1')
