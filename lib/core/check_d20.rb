@@ -4,10 +4,10 @@ class CheckD20 < Check
 
   private
 
-  def set_results
+  def set_results( strict_superiority: false )
     @score = @kept_dices
     target = 10+@bonus
-    @success = (@score >= target)
+    @success = strict_superiority ? (@score >= target) : (@score > target)
     @critic = false
 
     if @kept_dices == 1

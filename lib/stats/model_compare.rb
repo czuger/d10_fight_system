@@ -13,20 +13,18 @@ class ModelCompare
 
   include HtmlUpdater
 
-  def initialize( roll_type= :regular )
+  def initialize
     @results= {}
-    @results_per_target= {}
-    @roll_type= roll_type
   end
 
-  def compute_results( steps_enumerator )
+  def compute_results( roll_type, strict_superiority, steps_enumerator )
     steps_enumerator.each do |target|
       permutations_d20.each do |roll|
-        check_d20(target, 20, roll)
+        check_d20(roll_type, strict_superiority, target,  roll)
       end
 
       permutations_d10.each do |roll|
-        check_2d10(target, 10, roll)
+        check_2d10(roll_type, strict_superiority, target,  roll)
       end
     end
   end
@@ -41,7 +39,7 @@ class ModelCompare
   end
 
   def results_to_html
-    pp @results_per_target
+    pp @results
     keys = @results.keys.sort
 
     header = keys.map{ |k| "<th>#{k[4..-1]}</th>" }.insert( 0, '<th></th>' ).join( '' )
@@ -59,12 +57,12 @@ class ModelCompare
   end
 
   def results_to_yaml( filename )
-    current_data = YAML.load_file( "data/#{filename}.yaml" )
+    # current_data = YAML.load_file( "data/#{filename}.yaml" )
 
-    # p @results_per_target[8][10]
+    # p @results[8][10]
 
     File.open( "data/#{filename}.yaml", 'w' ) do |f|
-      f.write current_data.merge( @results_per_target ).to_yaml
+      f.write @results.to_yaml
     end
   end
   
@@ -95,40 +93,39 @@ class ModelCompare
     end
   end
 
-  def increase_hashes_value(target, dice, result)
-    label = target_key(target, dice)
-    @results[label] ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
-    @results[label][result.status] ||= 0.0
-    @results[label][result.status] += 1.0
+  def increase_hashes_value(roll_type, strict_superiority, target, dice, result)
 
-    @results[label][:sum] ||= 0.0
-    @results[label][:sum] += 1.0
+    strict_superiority = strict_superiority ? 'strict_superiority' : 'superior_or_equal'
+    @results[roll_type] ||= {}
+    @results[roll_type][strict_superiority] ||= {}
+    @results[roll_type][strict_superiority][target] ||= {}
 
-    @results_per_target[target] ||= {}
-    @results_per_target[target][dice] ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
+    tmp_results = { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
 
-    @results_per_target[target][dice][result.status] += 1.0
+    # p "result = '#{result.status.inspect}'"
+    # tmp_results[result.status] += 1.0
 
-    @results_per_target[target][dice][:success] += 1.0 if result.status == :critical_success
-    @results_per_target[target][dice][:failure] += 1.0 if result.status == :critical_failure
+    tmp_results[:success] += 1.0 if result.status == :critical_success
+    tmp_results[:failure] += 1.0 if result.status == :critical_failure
 
-    @results_per_target[target][dice][:sum] += 1.0
+    tmp_results[:sum] += 1.0
 
+    @results[roll_type][strict_superiority][target][dice] = tmp_results
   end
 
-  def check_2d10(target, dice, roll)
-    result = Check2d10.new.roll( target: target, roll_type: @roll_type, rolls: roll )
-    increase_hashes_value target, dice, result
+  def check_2d10(roll_type, strict_superiority, target,  roll)
+    result = Check2d10.new.roll( roll_type: roll_type, strict_superiority: strict_superiority, target: target, rolls: roll )
+    increase_hashes_value roll_type, strict_superiority, target, 10, result
   end
 
-  def check_d20(target, dice, roll)
-    result = CheckD20.new.roll( target: target, roll_type: @roll_type, rolls: roll )
-    increase_hashes_value target, dice, result
+  def check_d20(roll_type, strict_superiority, target,  roll)
+    result = CheckD20.new.roll( roll_type: roll_type, strict_superiority: strict_superiority, target: target, rolls: roll )
+    increase_hashes_value roll_type, strict_superiority, target, 20, result
   end
   
-  def target_key(target, dice)
-    dice_name = (dice==10) ? '2d10' : 'd20'
-    '%2d%2d Target %2d, %s' % [ target, dice, target, dice_name ]
-  end
+  # def target_key(target, dice)
+  #   dice_name = (dice==10) ? '2d10' : 'd20'
+  #   '%2d%2d Target %2d, %s' % [ target, dice, target, dice_name ]
+  # end
   
 end

@@ -7,19 +7,19 @@ class Check
   RESULT_COLORS = { success: :blue, critical_success: :green,
                     critical_failure: :red, failure: :yellow }.freeze
 
-  def initialize(attribute = 10, skill = 0)
+  def initialize(attribute = 10, skill = 0 )
     @attribute = attribute
     @skill = skill
     @success = @critic = nil
   end
 
-  def roll(target: 0, roll_type: :regular, rolls: nil)
+  def roll(roll_type: :regular, strict_superiority: false, target: 0, rolls: nil)
     @bonus = @attribute - 10 + @skill + target - 10
     @roll_type = roll_type
 
     roll_dices(rolls)
 
-    set_results
+    set_results( strict_superiority: strict_superiority )
     set_status
 
     self
