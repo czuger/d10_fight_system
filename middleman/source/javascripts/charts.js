@@ -3,6 +3,8 @@ window.onload = function () {
     var data=document.getElementById("json_data").value;
     data = JSON.parse( data );
 
+    console.log( data );
+
     Highcharts.chart('chart_regular_success', {
 
         title: {
@@ -40,7 +42,7 @@ window.onload = function () {
 
         series: [{
             name: 'd20',
-            data: data.d20
+            data: data.regular.strict_superiority.d20
         }, {
             name: '2d10',
             data: data.d10

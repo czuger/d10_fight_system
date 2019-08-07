@@ -11,4 +11,6 @@ mc = ModelCompare.new
   end
 
   mc.results_to_yaml 'results'
+
+  mc.charts_data_to_yaml
 end

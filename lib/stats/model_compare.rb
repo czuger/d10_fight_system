@@ -61,28 +61,40 @@ class ModelCompare
 
     # p @results[8][10]
 
-    compute_percentages
+    # compute_percentages
 
     File.open( "data/#{filename}.yaml", 'w' ) do |f|
       f.write @results.to_yaml
     end
   end
 
-  def compute_percentages
-    @results.each_key do |roll_type|
-      @results[roll_type].each_key do |superiority|
-        @results[roll_type][superiority].each_key do |target|
-          t = @results[roll_type][superiority][target]
+  def charts_data_to_yaml
+    charts_data = {}
 
-          percentages = {}
-          percentages[:success] = ((t[:success]*100) / t[:sum]).round
-          percentages[:failure] = ((t[:failure]*100) / t[:sum]).round
-          percentages[:critical_success] = ((t[:critical_success]*100) / t[:sum]).round
-          percentages[:critical_failure] = ((t[:critical_failure]*100) / t[:sum]).round
+    @results.each do |roll_type_key, roll_type|
+      roll_type.each do |superiority_key, superiority|
+        superiority.each do |dice_type_key, dice_type|
+          dice_type.each do |target, data|
 
-          @results[roll_type][superiority][target][:percentages] = percentages
+            charts_data[roll_type_key] ||= {}
+            charts_data[roll_type_key][:success] ||= {}
+            charts_data[roll_type_key][:critical_success] ||= {}
+
+            charts_data[roll_type_key][:success][superiority_key] ||= {}
+            charts_data[roll_type_key][:critical_success][superiority_key] ||= {}
+            
+            charts_data[roll_type_key][:success][superiority_key][dice_type_key] ||= []
+            charts_data[roll_type_key][:success][superiority_key][dice_type_key] << ((data[:success]*100) / data[:sum]).round
+
+            charts_data[roll_type_key][:critical_success][superiority_key][dice_type_key] ||= []
+            charts_data[roll_type_key][:critical_success][superiority_key][dice_type_key] << ((data[:critical_success]*100) / data[:sum]).round
+          end
         end
       end
+    end
+
+    File.open( 'data/charts.yaml', 'w' ) do |f|
+      f.write charts_data.to_yaml
     end
   end
   
@@ -113,13 +125,14 @@ class ModelCompare
     end
   end
 
-  def increase_hashes_value(roll_type, strict_superiority, target, dice, result)
+  def increase_hashes_value(roll_type, strict_superiority, target, dice_type, result)
 
     strict_superiority = strict_superiority ? 'strict_superiority' : 'superior_or_equal'
     @results[roll_type] ||= {}
     @results[roll_type][strict_superiority] ||= {}
+    @results[roll_type][strict_superiority][dice_type] ||= {}
 
-    tmp_results = @results[roll_type][strict_superiority][target]
+    tmp_results = @results[roll_type][strict_superiority][dice_type][target]
     tmp_results ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
 
     # p "result = '#{result.status.inspect}'"
@@ -133,17 +146,17 @@ class ModelCompare
 
     tmp_results[:sum] += 1.0
 
-    @results[roll_type][strict_superiority][target] = tmp_results
+    @results[roll_type][strict_superiority][dice_type][target] = tmp_results
   end
 
   def check_2d10(roll_type, strict_superiority, target,  roll)
     result = Check2d10.new.roll( roll_type: roll_type, strict_superiority: strict_superiority, target: target, rolls: roll )
-    increase_hashes_value roll_type, strict_superiority, target, 10, result
+    increase_hashes_value roll_type, strict_superiority, target, 'd10', result
   end
 
   def check_d20(roll_type, strict_superiority, target,  roll)
     result = CheckD20.new.roll( roll_type: roll_type, strict_superiority: strict_superiority, target: target, rolls: roll )
-    increase_hashes_value roll_type, strict_superiority, target, 20, result
+    increase_hashes_value roll_type, strict_superiority, target, 'd20', result
   end
   
   # def target_key(target, dice)
