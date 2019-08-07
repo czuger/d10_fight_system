@@ -98,19 +98,22 @@ class ModelCompare
     strict_superiority = strict_superiority ? 'strict_superiority' : 'superior_or_equal'
     @results[roll_type] ||= {}
     @results[roll_type][strict_superiority] ||= {}
-    @results[roll_type][strict_superiority][target] ||= {}
 
-    tmp_results = { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
+    tmp_results = @results[roll_type][strict_superiority][target]
+    tmp_results ||= { :critical_failure => 0.0, :sum => 0.0, :failure => 0.0, :success => 0.0, :critical_success => 0.0 }
 
     # p "result = '#{result.status.inspect}'"
     # tmp_results[result.status] += 1.0
 
-    tmp_results[:success] += 1.0 if result.status == :critical_success
-    tmp_results[:failure] += 1.0 if result.status == :critical_failure
+    tmp_results[:success] += 1.0 if result.success
+    tmp_results[:failure] += 1.0 unless result.success
+
+    tmp_results[:critical_success] += 1.0 if result.status == :critical_success
+    tmp_results[:critical_failure] += 1.0 if result.status == :critical_failure
 
     tmp_results[:sum] += 1.0
 
-    @results[roll_type][strict_superiority][target][dice] = tmp_results
+    @results[roll_type][strict_superiority][target] = tmp_results
   end
 
   def check_2d10(roll_type, strict_superiority, target,  roll)
