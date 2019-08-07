@@ -61,8 +61,28 @@ class ModelCompare
 
     # p @results[8][10]
 
+    compute_percentages
+
     File.open( "data/#{filename}.yaml", 'w' ) do |f|
       f.write @results.to_yaml
+    end
+  end
+
+  def compute_percentages
+    @results.each_key do |roll_type|
+      @results[roll_type].each_key do |superiority|
+        @results[roll_type][superiority].each_key do |target|
+          t = @results[roll_type][superiority][target]
+
+          percentages = {}
+          percentages[:success] = ((t[:success]*100) / t[:sum]).round
+          percentages[:failure] = ((t[:failure]*100) / t[:sum]).round
+          percentages[:critical_success] = ((t[:critical_success]*100) / t[:sum]).round
+          percentages[:critical_failure] = ((t[:critical_failure]*100) / t[:sum]).round
+
+          @results[roll_type][superiority][target][:percentages] = percentages
+        end
+      end
     end
   end
   
