@@ -7,7 +7,7 @@ class Check2d10 < Check
   def set_results( strict_superiority: false )
     @score = @kept_dices.inject(:+)
     target = 10+@bonus
-    @success = strict_superiority ? (@score >= target) : (@score > target)
+    @success = strict_superiority ? (@score > target) : (@score >= target)
 
     # puts "@score = #{@score}, score = #{score}, target = #{target}, @success = #{@success}"
 

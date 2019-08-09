@@ -33,10 +33,10 @@ draw_chart = function( chart_id, title, formatter, serie_d10, serie_d20, max ) {
 
         series: [{
             name: 'd20',
-            data: serie_d10
+            data: serie_d20
         }, {
             name: '2d10',
-            data: serie_d20
+            data: serie_d10
         }],
 
         responsive: {
