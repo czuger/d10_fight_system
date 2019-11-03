@@ -86,6 +86,27 @@ window.onload = function () {
         data.regular.success.superior_or_equal.d10, data.regular.success.superior_or_equal.d20, 100
     )
 
+    draw_chart( 'chart_critical_success', 'Comparaison des chances de réussites critiques entre un d20 et 2d10',
+        function ( chart ) {
+            // console.log( chart )
+            return 'Pour une difficulté de <b>' + chart.x +
+                '</b> les chances de réussites critiques sont de <b>' + chart.y + '%</b>' +
+                ' pour ' + chart.series.name
+        },
+        data.regular.critical_success.strict_superiority.d10, data.regular.critical_success.strict_superiority.d20, 10
+    )
+
+    draw_chart( 'chart_critical_success_equality', 'Comparaison des chances de réussites critiques entre un d20 et 2d10 - equal',
+        function ( chart ) {
+            // console.log( chart )
+            return 'Pour une difficulté de <b>' + chart.x +
+                '</b> les chances de réussites critiques sont de <b>' + chart.y + '%</b>' +
+                ' pour ' + chart.series.name
+        },
+        data.regular.critical_success.superior_or_equal.d10, data.regular.critical_success.superior_or_equal.d20, 10
+    )
+
+
     // Highcharts.chart('chart_critical_success', {
     //
     //     title: {
