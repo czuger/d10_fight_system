@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-# gem "rails"
+# gem 'rails'
 
 gem 'colorize'
 gem 'activerecord'
@@ -23,3 +23,8 @@ gem 'rake', '~> 10.0'
 gem 'i18n'
 
 gem 'middleman'
+
+gem 'haml', '>= 5.0.0'
+gem 'crack', '>= 0.3.2'
+gem 'httparty', '>= 0.10.0'
+gem 'rack', '>= 1.6.11'
