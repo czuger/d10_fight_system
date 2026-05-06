@@ -1,0 +1,250 @@
+{
+  "magic:arcane:magic_missile": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d4"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d4"
+      },
+      "critical_failure": {
+        "type": "self_hurt",
+        "roll": "1d4"
+      }
+    }
+  },
+  "magic:arcane:magic_shield": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "attack_block"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "attack_block"
+      },
+      "critical_failure": {
+        "type": "self_hurt",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:ranged:short_bow": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d4"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d4"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:short_sword": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d6"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d6"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:long_sword": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d8"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d8"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:spear": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d6"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d6"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:axe": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d6"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d6"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:two_handed_axe": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d10"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d10"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:melee:two_handed_sword": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d10"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d10"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:ranged:long_bow": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d6"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d6"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "weapon:ranged:composite_bow": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "damage",
+        "roll": "1d8"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "damage",
+        "roll": "2d8"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  },
+  "equipment:defense:hand_shield_small": {
+    "learning_difficulty": 1,
+    "current_bonus": 0,
+    "result": {
+      "success": {
+        "type": "attack_block"
+      },
+      "failure": {
+        "type": "none"
+      },
+      "critical_success": {
+        "type": "attack_block"
+      },
+      "critical_failure": {
+        "type": "equipment_damage",
+        "roll": "1d4"
+      }
+    }
+  }
+}
